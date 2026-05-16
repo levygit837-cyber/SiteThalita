@@ -46,11 +46,11 @@ export const translations = {
     sobre: {
       badge: "A Médica",
       title: "Dra. Thalita Barbosa",
-      bio: "Médica graduada pela UNIDA, com especialização em dermatologia clínica. Dedica-se à medicina estética com foco em tratamentos minimamente invasivos que proporcionam resultados naturais e harmônicos.",
-      gradTitle: "UNIDA",
-      gradDesc: "Graduação em Medicina",
-      posTitle: "Dermato Clínica",
-      posDesc: "Pós-graduação",
+      bio: "Médica graduada pela UNIDA, pós-graduanda em Dermatologia Clínica, Cirúrgica e Cosmiátrica. Atua na medicina estética avançada com foco em rejuvenescimento natural, dermatologia preventiva e tecnologias regenerativas, associando ciência, naturalidade e tecnologia para promover resultados sofisticados, seguros e individualizados.",
+      gradTitle: "Médica",
+      gradDesc: "Graduada pela UNIDA",
+      posTitle: "Dermatologia Clínica, Cirúrgica e Cosmiátrica",
+      posDesc: "Pós-graduanda",
       cta: "Agendar Consulta",
       fotoLabel: "Foto profissional"
     },
@@ -220,7 +220,7 @@ export const translations = {
       contato: "Contato",
       location: "Ciudad del Este / PY",
       copyright: "© 2024 Dra. Thalita Barbosa. Todos os direitos reservados.",
-      disclaimer: "Dra. Thalita Barbosa - Médica (UNIDA). Pós-graduanda Dermato Clínica."
+      disclaimer: "Dra. Thalita Barbosa - Médica (UNIDA). Pós-graduanda em Dermatologia Clínica, Cirúrgica e Cosmiátrica."
     },
 
     // Mobile CTA
@@ -282,11 +282,11 @@ export const translations = {
     sobre: {
       badge: "La Médica",
       title: "Dra. Thalita Barbosa",
-      bio: "Médica graduada por la UNIDA, con especialización en dermatología clínica. Se dedica a la medicina estética con enfoque en tratamientos mínimamente invasivos que proporcionan resultados naturales y armónicos.",
-      gradTitle: "UNIDA",
-      gradDesc: "Graduación en Medicina",
-      posTitle: "Dermato Clínica",
-      posDesc: "Posgrado",
+      bio: "Médica graduada por la UNIDA, posgraduanda en Dermatología Clínica, Quirúrgica y Cosmiátrica. Actúa en la medicina estética avanzada con enfoque en rejuvenecimiento natural, dermatología preventiva y tecnologías regenerativas, asociando ciencia, naturalidad y tecnología para promover resultados sofisticados, seguros e individualizados.",
+      gradTitle: "Médica",
+      gradDesc: "Graduada por la UNIDA",
+      posTitle: "Dermatología Clínica, Quirúrgica y Cosmiátrica",
+      posDesc: "Posgraduanda",
       cta: "Agendar Consulta",
       fotoLabel: "Foto profesional"
     },
@@ -454,7 +454,7 @@ export const translations = {
       contato: "Contacto",
       location: "Ciudad del Este / PY",
       copyright: "© 2024 Dra. Thalita Barbosa. Todos los derechos reservados.",
-      disclaimer: "Dra. Thalita Barbosa - Médica (UNIDA). Posgraduanda Dermato Clínica."
+      disclaimer: "Dra. Thalita Barbosa - Médica (UNIDA). Posgraduanda en Dermatología Clínica, Quirúrgica y Cosmiátrica."
     },
 
     // Mobile CTA
