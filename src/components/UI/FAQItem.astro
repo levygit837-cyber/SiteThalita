@@ -1,0 +1,25 @@
+---
+export interface Props {
+  question: string;
+  answer: string;
+  questionI18n?: string;
+  answerI18n?: string;
+}
+
+const { question, answer, questionI18n, answerI18n } = Astro.props;
+---
+
+<div class="bg-white/60 rounded-2xl border border-graphite/10 hover:border-rose/30 shadow-glass transition-colors">
+    <label class="block cursor-pointer accordion-label">
+        <input type="checkbox" class="sr-only accordion-input" name="faq">
+        <div class="flex justify-between items-center text-graphite font-medium select-none p-6">
+            <span data-i18n={questionI18n}>{question}</span>
+            <i class="ph ph-plus text-xl acc-icon transition-transform text-rose"></i>
+        </div>
+        <div class="accordion-content mt-0 group">
+            <div class="text-sm text-logogrey px-6 pb-6 pt-0 leading-relaxed font-light" data-i18n={answerI18n}>
+                {answer}
+            </div>
+        </div>
+    </label>
+</div>

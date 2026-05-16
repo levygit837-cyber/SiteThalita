@@ -1,0 +1,254 @@
+@import "tailwindcss";
+
+@theme {
+  --color-graphite: #111113;
+  --color-softblack: #1C1B1F;
+  --color-charcoal: #17202A;
+  --color-navy: #22313F;
+  --color-fog: #E8E6E2;
+  --color-pearl: #F7F5F1;
+  --color-nude: #D8C5BA;
+  --color-blush: #CFAEA1;
+  --color-rose: #B98F87;
+  --color-silver: #A7A7A7;
+  --color-logogrey: #5F5F5F;
+
+  --font-family-serif: "Playfair Display", serif;
+  --font-family-sans: Manrope, sans-serif;
+
+  --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+  --shadow-glass-dark: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Custom Properties & Utilities */
+:root {
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body {
+  background-color: #F7F5F1;
+  color: #111113;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Fluid Typography scaling for large headings */
+.text-fluid-h1 { font-size: clamp(2.5rem, 5vw + 1rem, 4.75rem); line-height: 1.05; }
+.text-fluid-h2 { font-size: clamp(2rem, 3vw + 1rem, 3.25rem); line-height: 1.1; }
+
+/* Glassmorphism Classes */
+.glass-panel-dark {
+  background: rgba(28, 27, 31, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+.glass-panel-light {
+  background: rgba(247, 245, 241, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(17, 17, 19, 0.05);
+}
+
+/* Scroll Animations Engine */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.2s var(--ease-out-expo), transform 1.2s var(--ease-out-expo);
+}
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 1.2s var(--ease-out-expo), transform 1.2s var(--ease-out-expo);
+}
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 1.2s var(--ease-out-expo), transform 1.2s var(--ease-out-expo);
+}
+
+.is-revealed {
+  opacity: 1;
+  transform: translate(0);
+}
+
+/* Staggered Children Setup */
+.stagger-group > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s var(--ease-out-expo);
+}
+.stagger-group.is-revealed > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+.stagger-group.is-revealed > *:nth-child(1) { transition-delay: 0.1s; }
+.stagger-group.is-revealed > *:nth-child(2) { transition-delay: 0.2s; }
+.stagger-group.is-revealed > *:nth-child(3) { transition-delay: 0.3s; }
+.stagger-group.is-revealed > *:nth-child(4) { transition-delay: 0.4s; }
+.stagger-group.is-revealed > *:nth-child(5) { transition-delay: 0.5s; }
+
+/* Timeline specific */
+.timeline-line {
+  position: absolute;
+  left: 23px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(167, 167, 167, 0.2);
+  z-index: 1;
+}
+.timeline-progress {
+  position: absolute;
+  top: 0;
+  left: -1px;
+  width: 3px;
+  background: #D8C5BA;
+  height: 0%;
+  transition: height 0.5s ease-out;
+}
+
+/* Micro-interactions */
+.btn-hover-effect {
+  position: relative;
+  overflow: hidden;
+}
+.btn-hover-effect::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%; width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: all 0.5s ease;
+}
+.btn-hover-effect:hover::after { left: 100%; }
+
+.image-zoom-container { overflow: hidden; }
+.image-zoom-container img { transition: transform 1.5s var(--ease-out-expo); }
+.image-zoom-container:hover img { transform: scale(1.03); }
+
+/* Document Theme Borders */
+.doc-border-top { border-top: 1px solid rgba(167, 167, 167, 0.3); }
+.doc-border-bottom { border-bottom: 1px solid rgba(167, 167, 167, 0.3); }
+
+/* Smooth Hide Scrollbar for internal panels */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Accordion logic */
+.accordion-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s var(--ease-out-expo);
+}
+.accordion-content > div { overflow: hidden; }
+.accordion-input:checked ~ .accordion-content { grid-template-rows: 1fr; }
+.accordion-input:checked ~ .accordion-label .acc-icon { transform: rotate(180deg); }
+
+/* Procedimento Card states */
+.procedimento-card:has(.accordion-input:checked) {
+  border-color: rgba(185, 143, 135, 0.4);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
+}
+
+/* ─── Background Patterns ─── */
+
+/* Sutil grid médico (tipo prancheta) */
+.bg-pattern-grid {
+  background-image:
+    linear-gradient(rgba(184, 143, 135, 0.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(184, 143, 135, 0.10) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Dots sutis */
+.bg-pattern-dots {
+  background-image: radial-gradient(circle, rgba(184, 143, 135, 0.18) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Linhas horizontais tipo documento médico */
+.bg-pattern-lines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 39px,
+    rgba(184, 143, 135, 0.12) 40px
+  );
+}
+
+/* Organic blobs em tons de rosé/nude para profundidade */
+.bg-organic-blobs::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 50% 40% at 15% 30%, rgba(216, 197, 186, 0.25) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 50% at 85% 70%, rgba(207, 174, 161, 0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 30% 30% at 50% 10%, rgba(185, 143, 135, 0.12) 0%, transparent 60%);
+}
+
+/* Blob único, lado direito */
+.bg-blob-right::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  right: -15%;
+  width: 50%;
+  height: 60%;
+  background: radial-gradient(circle, rgba(216, 197, 186, 0.22) 0%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Blob único, lado esquerdo */
+.bg-blob-left::before {
+  content: '';
+  position: absolute;
+  bottom: -10%;
+  left: -15%;
+  width: 50%;
+  height: 60%;
+  background: radial-gradient(circle, rgba(207, 174, 161, 0.18) 0%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Arco decorativo sutil no topo */
+.bg-arc-top {
+  background-image: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(216, 197, 186, 0.15) 0%, transparent 70%);
+}
+
+/* Leaf watermark filter — turns white leaf into visible dark gray for light backgrounds */
+.leaf-dark {
+  filter: brightness(0) invert(0.35);
+}
+
+/* Subtle floating animation for leaf decorations */
+@keyframes leaf-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-leaf-float {
+  animation: leaf-float 6s ease-in-out infinite;
+}
+
+/* Noise sutil para textura de papel */
+.bg-noise {
+  position: relative;
+}
+.bg-noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}

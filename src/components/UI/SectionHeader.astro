@@ -1,0 +1,20 @@
+---
+import Badge from './Badge.astro';
+
+export interface Props {
+  badge?: string;
+  title: string;
+  description?: string;
+  badgeI18n?: string;
+  titleI18n?: string;
+  descI18n?: string;
+}
+
+const { badge, title, description, badgeI18n, titleI18n, descI18n } = Astro.props;
+---
+
+<div class="text-center mb-16 reveal-up">
+    {badge && <Badge text={badge} i18nKey={badgeI18n} />}
+    <h2 class="text-fluid-h2 font-serif text-graphite mb-6" data-i18n={titleI18n}>{title}</h2>
+    {description && <p class="text-logogrey font-light text-lg max-w-2xl mx-auto" data-i18n={descI18n}>{description}</p>}
+</div>

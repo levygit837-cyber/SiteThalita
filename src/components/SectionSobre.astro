@@ -1,0 +1,46 @@
+---
+import DecorativeLeaf from './DecorativeLeaf.astro';
+---
+
+<section id="sobre" class="py-32 bg-pearl relative overflow-hidden bg-pattern-lines bg-blob-left">
+    <div class="absolute left-[-10%] bottom-[-20%] w-[40%] h-[40%] bg-nude/20 rounded-full blur-[120px] pointer-events-none"></div>
+    <DecorativeLeaf size="480px" bottom="8%" left="-5%" rotation={25} />
+
+    <div class="max-w-[1400px] mx-auto px-4 md:px-12 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+            <div class="lg:col-span-5 reveal-left">
+                <div class="aspect-[3/4] bg-fog/60 rounded-[2rem] border border-graphite/10 overflow-hidden backdrop-blur-sm">
+                    <img src="/THALITA2SEMFUNDO.png" alt="Dra. Thalita Barbosa" class="w-full h-full object-cover" />
+                </div>
+            </div>
+
+            <div class="lg:col-span-7 flex flex-col justify-center reveal-right">
+                <div class="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded-full border border-rose/30 bg-nude/10 self-start">
+                    <span class="w-1.5 h-1.5 rounded-full bg-rose"></span>
+                    <span class="text-xs font-semibold tracking-widest uppercase text-rose/90" data-i18n="sobre.badge">A Médica</span>
+                </div>
+
+                <h2 class="text-fluid-h2 font-serif text-graphite mb-6" data-i18n="sobre.title">Dra. Thalita Barbosa</h2>
+
+                <p class="text-logogrey font-light text-lg leading-relaxed mb-8" data-i18n="sobre.bio">
+                    Médica graduada pela UNIDA, com especialização em dermatologia clínica. Dedica-se à medicina estética com foco em tratamentos minimamente invasivos que proporcionam resultados naturais e harmônicos.
+                </p>
+
+                <div class="grid grid-cols-2 gap-6 mb-8">
+                    <div class="bg-rose/5 rounded-xl p-4 border border-rose/20 shadow-glass">
+                        <div class="text-rose font-serif text-2xl mb-1" data-i18n="sobre.gradTitle">UNIDA</div>
+                        <p class="text-logogrey text-xs" data-i18n="sobre.gradDesc">Graduação em Medicina</p>
+                    </div>
+                    <div class="bg-rose/5 rounded-xl p-4 border border-rose/20 shadow-glass">
+                        <div class="text-rose font-serif text-2xl mb-1" data-i18n="sobre.posTitle">Dermato Clínica</div>
+                        <p class="text-logogrey text-xs" data-i18n="sobre.posDesc">Pós-graduação</p>
+                    </div>
+                </div>
+
+                <a href="#agendamento" class="inline-flex items-center justify-center px-8 py-4 bg-rose text-white font-semibold rounded-full btn-hover-effect hover:scale-[0.98] transition-transform self-start shadow-[0_10px_30px_-10px_rgba(185,143,135,0.5)]" rel="nofollow" data-i18n="sobre.cta">
+                    Agendar Consulta
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,171 @@
+---
+import SectionHeader from './UI/SectionHeader.astro';
+import ProcedimentoCard from './UI/ProcedimentoCard.astro';
+import IconToxina from './icons/IconToxina.astro';
+import IconPreenchimento from './icons/IconPreenchimento.astro';
+import IconRegenerativos from './icons/IconRegenerativos.astro';
+import IconSkincare from './icons/IconSkincare.astro';
+import IconSobrancelhas from './icons/IconSobrancelhas.astro';
+import IconLipolitico from './icons/IconLipolitico.astro';
+---
+
+<section id="procedimentos" class="py-32 bg-rose/5 relative overflow-hidden bg-pattern-dots bg-blob-right">
+    <div class="absolute right-[-10%] top-[-20%] w-[40%] h-[40%] bg-nude/20 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="max-w-[1400px] mx-auto px-4 md:px-12 relative z-10">
+        <SectionHeader
+            badge="Tratamentos"
+            title="Procedimentos"
+            description="Tratamentos minimamente invasivos para realçar sua beleza natural com segurança, ciência e individualização."
+            badgeI18n="procedimentos.badge"
+            titleI18n="procedimentos.title"
+            descI18n="procedimentos.description"
+        />
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start stagger-group">
+            <ProcedimentoCard
+                cardId="toxina-botulinica"
+                icon="ph-activity"
+                title="Toxina Botulínica"
+                description="Tratamentos estéticos e terapêuticos para suavizar linhas de expressão, prevenir rugas e melhorar condições funcionais."
+                titleI18n="procedimentos.toxinaTitle"
+                descI18n="procedimentos.toxinaDesc"
+                grupos={[
+                  {
+                    titulo: 'Toxina Botulínica Estética',
+                    tituloI18n: 'procedimentos.toxinaGrupo1',
+                    itens: [
+                      { nome: 'Botox Baby', slug: 'botox-baby', descricao: 'Aplicação sutil e preventiva para suavização leve de linhas de expressão.', nomeI18n: 'procedimentos.toxinaItem1', descricaoI18n: 'procedimentos.toxinaItem1Desc' },
+                      { nome: 'Terço Superior e Médio', slug: 'terco-superior-medio', descricao: 'Testa, glabela, região dos olhos e áreas associadas.', nomeI18n: 'procedimentos.toxinaItem2', descricaoI18n: 'procedimentos.toxinaItem2Desc' },
+                      { nome: 'Terço Inferior + Nefertiti', slug: 'terco-inferior-nefertiti', descricao: 'Região inferior da face, contorno mandibular e pescoço.', nomeI18n: 'procedimentos.toxinaItem3', descricaoI18n: 'procedimentos.toxinaItem3Desc' },
+                      { nome: 'Face Completa', slug: 'face-completa-toxina', descricao: 'Planejamento global da face para equilíbrio e naturalidade.', nomeI18n: 'procedimentos.toxinaItem4', descricaoI18n: 'procedimentos.toxinaItem4Desc' },
+                    ]
+                  },
+                  {
+                    titulo: 'Toxina Botulínica Terapêutica',
+                    tituloI18n: 'procedimentos.toxinaGrupo2',
+                    itens: [
+                      { nome: 'Hiperidrose Axilar', slug: 'hiperidrose-axilar', descricao: 'Controle do suor excessivo nas axilas.', nomeI18n: 'procedimentos.toxinaItem5', descricaoI18n: 'procedimentos.toxinaItem5Desc' },
+                      { nome: 'Hiperidrose Palmar/Plantar', slug: 'hiperidrose-palmar-plantar', descricao: 'Controle do suor excessivo em mãos e pés.', nomeI18n: 'procedimentos.toxinaItem6', descricaoI18n: 'procedimentos.toxinaItem6Desc' },
+                      { nome: 'Enxaqueca/Migrânea', slug: 'enxaqueca-migranea', descricao: 'Aplicação com finalidade terapêutica conforme avaliação médica.', nomeI18n: 'procedimentos.toxinaItem7', descricaoI18n: 'procedimentos.toxinaItem7Desc' },
+                      { nome: 'Bruxismo', slug: 'bruxismo', descricao: 'Relaxamento de musculatura relacionada ao apertamento dentário.', nomeI18n: 'procedimentos.toxinaItem8', descricaoI18n: 'procedimentos.toxinaItem8Desc' },
+                      { nome: 'Tensão Muscular', slug: 'tensao-muscular', descricao: 'Relaxamento de áreas musculares específicas.', nomeI18n: 'procedimentos.toxinaItem9', descricaoI18n: 'procedimentos.toxinaItem9Desc' },
+                      { nome: 'Paralisia Facial', slug: 'paralisia-facial', descricao: 'Tratamento complementar para assimetrias e reequilíbrio facial.', nomeI18n: 'procedimentos.toxinaItem10', descricaoI18n: 'procedimentos.toxinaItem10Desc' },
+                    ]
+                  }
+                ]}
+            >
+                <IconToxina slot="icon" />
+            </ProcedimentoCard>
+
+            <ProcedimentoCard
+                cardId="preenchimento"
+                icon="ph-drop-half"
+                title="Preenchimento com Ácido Hialurônico"
+                description="Preenchimento facial com planejamento individualizado para realçar contornos, restaurar volume e manter resultados naturais."
+                titleI18n="procedimentos.preenchimentoTitle"
+                descI18n="procedimentos.preenchimentoDesc"
+                grupos={[
+                  {
+                    itens: [
+                      { nome: 'Preenchimento Facial (1,2 ml)', slug: 'preenchimento-facial', descricao: 'Olheiras, malar, bigode chinês, código de barras, lábios, mento e mandíbula.', nomeI18n: 'procedimentos.preenchimentoItem1', descricaoI18n: 'procedimentos.preenchimentoItem1Desc' },
+                      { nome: 'Rinomodelação', slug: 'rinomodelacao', descricao: 'Harmonização do contorno nasal com ácido hialurônico.', nomeI18n: 'procedimentos.preenchimentoItem2', descricaoI18n: 'procedimentos.preenchimentoItem2Desc' },
+                    ]
+                  }
+                ]}
+            >
+                <IconPreenchimento slot="icon" />
+            </ProcedimentoCard>
+
+            <ProcedimentoCard
+                cardId="regenerativos"
+                icon="ph-sparkle"
+                title="Tratamentos Regenerativos"
+                description="Protocolos regenerativos para estimular a recuperação da pele, melhorar textura, vitalidade e qualidade tecidual de forma progressiva."
+                titleI18n="procedimentos.regenerativosTitle"
+                descI18n="procedimentos.regenerativosDesc"
+                grupos={[
+                  {
+                    titulo: 'Sessões Avulsas',
+                    tituloI18n: 'procedimentos.regenerativosGrupo1',
+                    itens: [
+                      { nome: 'Regeneração Facial', slug: 'regeneracao-facial', descricao: 'Exossomos + PDRN para revitalização da pele.', nomeI18n: 'procedimentos.regenerativosItem1', descricaoI18n: 'procedimentos.regenerativosItem1Desc' },
+                      { nome: 'Regeneração Capilar', slug: 'regeneracao-capilar', descricao: 'Exossomos + PDRN para estimulação capilar.', nomeI18n: 'procedimentos.regenerativosItem2', descricaoI18n: 'procedimentos.regenerativosItem2Desc' },
+                      { nome: 'Regeneração de Sobrancelhas', slug: 'regeneracao-sobrancelhas', descricao: 'Exossomos para fortalecimento dos fios.', nomeI18n: 'procedimentos.regenerativosItem3', descricaoI18n: 'procedimentos.regenerativosItem3Desc' },
+                    ]
+                  },
+                  {
+                    titulo: 'Pacotes e Combos',
+                    tituloI18n: 'procedimentos.regenerativosGrupo2',
+                    itens: [
+                      { nome: 'Protocolo Facial Regenerativo (4 sessões)', slug: 'protocolo-facial-regenerativo', descricao: 'Exossomos + PDRN em plano de tratamento.', nomeI18n: 'procedimentos.regenerativosItem4', descricaoI18n: 'procedimentos.regenerativosItem4Desc' },
+                      { nome: 'Protocolo Capilar Regenerativo (6 sessões)', slug: 'protocolo-capilar-regenerativo', descricao: 'Exossomos + PDRN em plano de tratamento.', nomeI18n: 'procedimentos.regenerativosItem5', descricaoI18n: 'procedimentos.regenerativosItem5Desc' },
+                      { nome: 'Protocolo Regenerativo para Sobrancelhas (3 sessões)', slug: 'protocolo-regenerativo-sobrancelhas', descricao: 'Exossomos em plano de tratamento.', nomeI18n: 'procedimentos.regenerativosItem6', descricaoI18n: 'procedimentos.regenerativosItem6Desc' },
+                      { nome: 'Toxina Botulínica + Exossomos', slug: 'botox-exossomos', descricao: 'Pack facial completo combinado.', nomeI18n: 'procedimentos.regenerativosItem7', descricaoI18n: 'procedimentos.regenerativosItem7Desc' },
+                      { nome: 'Terço Superior + Exossomos', slug: 'terco-superior-exossomos', descricao: 'Pack combinado para revitalização do terço superior.', nomeI18n: 'procedimentos.regenerativosItem8', descricaoI18n: 'procedimentos.regenerativosItem8Desc' },
+                      { nome: 'Plano Facial Completo', slug: 'plano-facial-completo', descricao: 'Personalizado com 6 ml de ácido hialurônico.', nomeI18n: 'procedimentos.regenerativosItem9', descricaoI18n: 'procedimentos.regenerativosItem9Desc' },
+                    ]
+                  }
+                ]}
+            >
+                <IconRegenerativos slot="icon" />
+            </ProcedimentoCard>
+
+            <ProcedimentoCard
+                cardId="skincare"
+                icon="ph-sun"
+                title="Skincare Clínico Personalizado"
+                description="Rotina de skincare personalizada com avaliação médica, dossiê da pele e orientação individualizada para melhorar saúde, textura e luminosidade."
+                titleI18n="procedimentos.skincareTitle"
+                descI18n="procedimentos.skincareDesc"
+                grupos={[
+                  {
+                    itens: [
+                      { nome: 'Glow Skin Presencial', slug: 'glow-skin-presencial', descricao: 'Dossiê completo personalizado com avaliação presencial.', nomeI18n: 'procedimentos.skincareItem1', descricaoI18n: 'procedimentos.skincareItem1Desc' },
+                      { nome: 'Glow Skin Online', slug: 'glow-skin-online', descricao: 'Dossiê completo personalizado com avaliação online.', nomeI18n: 'procedimentos.skincareItem2', descricaoI18n: 'procedimentos.skincareItem2Desc' },
+                    ]
+                  }
+                ]}
+            >
+                <IconSkincare slot="icon" />
+            </ProcedimentoCard>
+
+            <ProcedimentoCard
+                cardId="sobrancelhas"
+                icon="ph-eye"
+                title="Protocolo de Sobrancelhas"
+                description="Protocolos para valorizar o olhar, organizar os fios, melhorar a região periocular e criar um aspecto mais harmônico."
+                titleI18n="procedimentos.sobrancelhasTitle"
+                descI18n="procedimentos.sobrancelhasDesc"
+                grupos={[
+                  {
+                    itens: [
+                      { nome: 'Laminação + Ativação Periocular', slug: 'laminacao-ativacao-periocular', descricao: 'Região periocular com revitalização do olhar.', nomeI18n: 'procedimentos.sobrancelhasItem1', descricaoI18n: 'procedimentos.sobrancelhasItem1Desc' },
+                      { nome: 'Laminação + Lifting de Sobrancelhas', slug: 'laminacao-lifting-sobrancelhas', descricao: 'Brow lamination com terço superior para elevação.', nomeI18n: 'procedimentos.sobrancelhasItem2', descricaoI18n: 'procedimentos.sobrancelhasItem2Desc' },
+                    ]
+                  }
+                ]}
+            >
+                <IconSobrancelhas slot="icon" />
+            </ProcedimentoCard>
+
+            <ProcedimentoCard
+                cardId="lipolitico"
+                icon="ph-scales"
+                title="Protocolo Lipolítico"
+                description="Protocolos direcionados para áreas específicas de gordura localizada, com planejamento individualizado e acompanhamento profissional."
+                titleI18n="procedimentos.lipoliticoTitle"
+                descI18n="procedimentos.lipoliticoDesc"
+                grupos={[
+                  {
+                    itens: [
+                      { nome: 'Protocolo Lipolítico Submentoniano', slug: 'protocolo-lipolitico-submentoniano', descricao: 'Papada — 3 sessões para redução de gordura localizada.', nomeI18n: 'procedimentos.lipoliticoItem1', descricaoI18n: 'procedimentos.lipoliticoItem1Desc' },
+                      { nome: 'Protocolo Lipolítico Corporal', slug: 'protocolo-lipolitico-corporal', descricao: 'Abdomen — 4 sessões para contorno corporal.', nomeI18n: 'procedimentos.lipoliticoItem2', descricaoI18n: 'procedimentos.lipoliticoItem2Desc' },
+                    ]
+                  }
+                ]}
+            >
+                <IconLipolitico slot="icon" />
+            </ProcedimentoCard>
+        </div>
+    </div>
+</section>

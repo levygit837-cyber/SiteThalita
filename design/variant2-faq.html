@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>FAQ | Dra. Thalita Barbosa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        graphite: '#111113',
+                        softblack: '#1C1B1F',
+                        charcoal: '#17202A',
+                        navy: '#22313F',
+                        fog: '#E8E6E2',
+                        pearl: '#F7F5F1',
+                        nude: '#D8C5BA',
+                        blush: '#CFAEA1',
+                        rose: '#B98F87',
+                        silver: '#A7A7A7',
+                        logogrey: '#5F5F5F'
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['Manrope', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.05)',
+                        'glass-dark': '0 8px 32px 0 rgba(0, 0, 0, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        :root {
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        body {
+            background-color: #111113;
+            color: #F7F5F1;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        .text-fluid-h1 { font-size: clamp(2.5rem, 5vw + 1rem, 4.75rem); line-height: 1.05; }
+        .text-fluid-h2 { font-size: clamp(2rem, 3vw + 1rem, 3.25rem); line-height: 1.1; }
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1.2s var(--ease-out-expo), transform 1.2s var(--ease-out-expo);
+        }
+        .is-revealed {
+            opacity: 1;
+            transform: translate(0);
+        }
+        .accordion-content {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.4s var(--ease-out-expo);
+        }
+        .accordion-content > div { overflow: hidden; }
+        .accordion-input:checked ~ .accordion-content { grid-template-rows: 1fr; }
+        .accordion-input:checked ~ .accordion-label .acc-icon { transform: rotate(45deg); color: #D8C5BA; }
+        .btn-hover-effect {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-hover-effect::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: all 0.5s ease;
+        }
+        .btn-hover-effect:hover::after { left: 100%; }
+        .page-transition {
+            animation: fadeIn 0.5s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-graphite text-pearl antialiased selection:bg-nude selection:text-graphite">
+    <header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-500 bg-graphite/40 backdrop-blur-xl border-b border-white/5 py-4">
+        <div class="max-w-[1400px] mx-auto px-6 md:px-12 flex justify-between items-center">
+            <a href="variant2-index.html" class="flex flex-col items-start gap-1 group z-50">
+                <img src="https://cdn.aidesigner.ai/user-assets/faf1936f29aef8d0/1778683957867-Thaligalogo4.jpeg" alt="Logo Thalita Barbosa" class="h-8 md:h-10 w-auto invert opacity-90 group-hover:opacity-100 transition-opacity" style="filter: brightness(0) invert(1) drop-shadow(0 0 1px rgba(255,255,255,0.5)); mix-blend-mode: screen;">
+            </a>
+            <nav class="hidden lg:flex items-center gap-8 text-sm font-medium tracking-wide">
+                <a href="variant2-filosofia.html" class="text-white/70 hover:text-nude transition-colors">Filosofia</a>
+                <a href="variant2-sobre.html" class="text-white/70 hover:text-nude transition-colors">A Médica</a>
+                <a href="variant2-metodo.html" class="text-white/70 hover:text-nude transition-colors">Método Glow</a>
+                <a href="variant2-procedimentos.html" class="text-white/70 hover:text-nude transition-colors">Procedimentos</a>
+                <a href="variant2-jornada.html" class="text-white/70 hover:text-nude transition-colors">Jornada</a>
+            </nav>
+            <a href="variant2-agendamento.html" class="hidden md:inline-flex items-center justify-center px-6 py-2.5 bg-nude text-graphite font-semibold text-sm rounded-full btn-hover-effect hover:scale-[0.98] transition-transform">
+                Agendar Avaliação
+            </a>
+            <button class="lg:hidden text-pearl text-2xl z-50">
+                <i class="ph ph-list"></i>
+            </button>
+        </div>
+    </header>
+    <section class="min-h-screen py-32 bg-graphite relative overflow-hidden page-transition">
+        <div class="absolute left-[-20%] top-[30%] w-[50%] h-[50%] bg-nude/10 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="max-w-[1400px] mx-auto px-4 md:px-12 relative z-10">
+            <div class="text-center mb-16 reveal-up">
+                <div class="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded-full border border-nude/30 bg-nude/5">
+                    <span class="text-xs font-semibold tracking-widest uppercase text-nude/90">Dúvidas</span>
+                </div>
+                <h2 class="text-fluid-h2 font-serif text-pearl mb-6">Perguntas Frequentes</h2>
+            </div>
+            <div class="max-w-3xl mx-auto space-y-4">
+                <div class="bg-charcoal/30 rounded-2xl border border-white/5">
+                    <label class="block cursor-pointer accordion-label">
+                        <input type="checkbox" class="sr-only accordion-input" name="faq">
+                        <div class="flex justify-between items-center text-pearl font-medium select-none p-6">
+                            <span>Os procedimentos são dolorosos?</span>
+                            <i class="ph ph-plus text-xl acc-icon transition-transform"></i>
+                        </div>
+                        <div class="accordion-content mt-0 group">
+                            <div class="text-sm text-silver px-6 pb-6 pt-0 leading-relaxed font-light">
+                                A maioria dos procedimentos é minimamente invasiva e causa pouco desconforto. Utilizamos anestésicos locais quando necessário para garantir seu conforto.
+                            </div>
+                        </div>
+                    </label>
+                </div>
+                <div class="bg-charcoal/30 rounded-2xl border border-white/5">
+                    <label class="block cursor-pointer accordion-label">
+                        <input type="checkbox" class="sr-only accordion-input" name="faq">
+                        <div class="flex justify-between items-center text-pearl font-medium select-none p-6">
+                            <span>Quanto tempo duram os resultados?</span>
+                            <i class="ph ph-plus text-xl acc-icon transition-transform"></i>
+                        </div>
+                        <div class="accordion-content mt-0 group">
+                            <div class="text-sm text-silver px-6 pb-6 pt-0 leading-relaxed font-light">
+                                A duração varia conforme o procedimento e o metabolismo de cada paciente. Em média, os resultados duram de 6 a 18 meses, podendo ser mantidos com tratamentos de manutenção.
+                            </div>
+                        </div>
+                    </label>
+                </div>
+                <div class="bg-charcoal/30 rounded-2xl border border-white/5">
+                    <label class="block cursor-pointer accordion-label">
+                        <input type="checkbox" class="sr-only accordion-input" name="faq">
+                        <div class="flex justify-between items-center text-pearl font-medium select-none p-6">
+                            <span>Existe período de recuperação?</span>
+                            <i class="ph ph-plus text-xl acc-icon transition-transform"></i>
+                        </div>
+                        <div class="accordion-content mt-0 group">
+                            <div class="text-sm text-silver px-6 pb-6 pt-0 leading-relaxed font-light">
+                                A maioria dos tratamentos permite retorno imediato às atividades normais. Alguns podem apresentar leve vermelhidão ou inchaço temporário que desaparece em poucos dias.
+                            </div>
+                        </div>
+                    </label>
+                </div>
+                <div class="bg-charcoal/30 rounded-2xl border border-white/5">
+                    <label class="block cursor-pointer accordion-label">
+                        <input type="checkbox" class="sr-only accordion-input" name="faq">
+                        <div class="flex justify-between items-center text-pearl font-medium select-none p-6">
+                            <span>A Gestão do "Não" na Estética</span>
+                            <i class="ph ph-plus text-xl acc-icon transition-transform"></i>
+                        </div>
+                        <div class="accordion-content mt-0 group">
+                            <div class="text-sm text-silver px-6 pb-6 pt-0 leading-relaxed font-light">
+                                O compromisso médico muitas vezes exige saber não indicar um procedimento caso não traga harmonia natural ao rosto, preservando a identidade visual da paciente.
+                            </div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <div class="text-center mt-16">
+                <a href="variant2-agendamento.html" class="inline-flex items-center justify-center px-8 py-4 bg-nude text-graphite font-semibold rounded-full btn-hover-effect hover:scale-[0.98] transition-transform">
+                    Agendar Avaliação
+                </a>
+            </div>
+        </div>
+    </section>
+    <footer class="bg-black text-white/60 py-16 border-t border-white/5 text-sm font-light">
+        <div class="max-w-[1400px] mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <div class="md:col-span-1">
+                <img src="https://cdn.aidesigner.ai/user-assets/faf1936f29aef8d0/1778683957867-Thaligalogo4.jpeg" alt="Logo" class="h-8 w-auto invert opacity-50 mb-6" style="filter: brightness(0) invert(1);">
+                <p class="max-w-[200px]">Medicina estética com precisão, ciência e naturalidade.</p>
+            </div>
+            <div>
+                <h5 class="text-white font-medium mb-4 uppercase tracking-wider text-xs">Acesso Rápido</h5>
+                <ul class="space-y-3">
+                    <li><a href="variant2-sobre.html" class="hover:text-nude transition-colors">A Médica</a></li>
+                    <li><a href="variant2-procedimentos.html" class="hover:text-nude transition-colors">Tratamentos</a></li>
+                    <li><a href="variant2-metodo.html" class="hover:text-nude transition-colors">Método Pele Glow</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="text-white font-medium mb-4 uppercase tracking-wider text-xs">Legal</h5>
+                <ul class="space-y-3">
+                    <li><a href="#" class="hover:text-nude transition-colors">Política de Privacidade</a></li>
+                    <li><a href="#" class="hover:text-nude transition-colors">Termos de Uso</a></li>
+                    <li><a href="#" class="hover:text-nude transition-colors">Aviso Médico</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="text-white font-medium mb-4 uppercase tracking-wider text-xs">Contato</h5>
+                <p class="mb-2">Ciudad del Este / PY</p>
+                <div class="flex gap-4 mt-6">
+                    <a href="#" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-nude hover:text-black transition-colors"><i class="ph-fill ph-whatsapp text-lg"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-nude hover:text-black transition-colors"><i class="ph-fill ph-instagram-logo text-lg"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-[1400px] mx-auto px-6 md:px-12 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium">
+            <p>&copy; 2024 Dra. Thalita Barbosa. Todos os direitos reservados.</p>
+            <p>Dra. Thalita Barbosa - Médica (UNIDA). Pós-graduanda Dermato Clínica.</p>
+        </div>
+    </footer>
+    <div class="fixed bottom-0 left-0 w-full p-4 lg:hidden z-50 bg-gradient-to-t from-graphite pt-10 to-transparent">
+        <a href="variant2-agendamento.html" class="flex items-center justify-center gap-2 w-full py-4 bg-nude text-black font-semibold rounded-2xl shadow-2xl">
+            <i class="ph-fill ph-calendar-plus text-xl"></i> Agendar Avaliação
+        </a>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const header = document.getElementById('main-header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('shadow-glass', 'bg-graphite/80');
+                    header.classList.remove('bg-graphite/40');
+                } else {
+                    header.classList.remove('shadow-glass', 'bg-graphite/80');
+                    header.classList.add('bg-graphite/40');
+                }
+            });
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('is-revealed');
+                });
+            }, observerOptions);
+            document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>

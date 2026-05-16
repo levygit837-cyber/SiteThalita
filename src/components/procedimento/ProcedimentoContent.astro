@@ -1,0 +1,283 @@
+---
+import FAQItem from '../UI/FAQItem.astro';
+
+export interface Props {
+  oQueE: string;
+  paraQuem: string[];
+  comoFunciona: string;
+  passos?: { ordem: number; titulo: string; descricao: string }[];
+  areasTratadas: string[];
+  resultados: string;
+  duracao: string;
+  recuperacao: string;
+  cuidadosAntes: string[];
+  cuidadosDepois: string[];
+  perguntasFrequentes: { pergunta: string; resposta: string }[];
+}
+
+const { oQueE, paraQuem, comoFunciona, passos, areasTratadas, resultados, duracao, recuperacao, cuidadosAntes, cuidadosDepois, perguntasFrequentes } = Astro.props;
+
+const sections = [
+  { id: 'o-que-e', label: 'O que é' },
+  { id: 'para-quem', label: 'Para quem' },
+  { id: 'como-funciona', label: 'Como funciona' },
+  { id: 'areas-tratadas', label: 'Áreas' },
+  { id: 'resultados', label: 'Resultados' },
+  { id: 'cuidados', label: 'Cuidados' },
+  { id: 'faq', label: 'Dúvidas' },
+];
+---
+
+<!-- Sticky Tabs Navigation (Desktop) -->
+<div class="hidden md:block sticky top-[72px] z-40 bg-pearl/90 backdrop-blur-xl border-b border-graphite/5 -mx-4 px-4 mb-12">
+  <nav class="max-w-[1400px] mx-auto">
+    <ul class="flex items-center gap-1 py-3 overflow-x-auto no-scrollbar">
+      {sections.map((section) => (
+        <li>
+          <a 
+            href={`#${section.id}`}
+            class="tab-link px-4 py-2 rounded-full text-sm font-medium text-logogrey hover:text-rose hover:bg-rose/5 transition-all whitespace-nowrap"
+            data-section={section.id}
+          >
+            {section.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</div>
+
+<div class="space-y-16 md:space-y-24">
+  <!-- O que é -->
+  <section id="o-que-e" class="scroll-mt-40">
+    <div class="flex items-center gap-4 mb-6">
+      <div class="w-12 h-12 rounded-xl bg-rose/10 flex items-center justify-center shrink-0">
+        <i class="ph-fill ph-info text-rose text-xl"></i>
+      </div>
+      <h2 class="text-2xl md:text-3xl font-serif text-graphite">O que é</h2>
+    </div>
+    <div class="bg-white/60 backdrop-blur-sm rounded-2xl border border-graphite/10 p-6 md:p-8 shadow-glass">
+      <p class="text-logogrey font-light leading-relaxed text-lg">{oQueE}</p>
+    </div>
+  </section>
+
+  <!-- Para quem é indicado -->
+  <section id="para-quem" class="scroll-mt-40">
+    <div class="flex items-center gap-4 mb-6">
+      <div class="w-12 h-12 rounded-xl bg-rose/10 flex items-center justify-center shrink-0">
+        <i class="ph-fill ph-users text-rose text-xl"></i>
+      </div>
+      <h2 class="text-2xl md:text-3xl font-serif text-graphite">Para quem é indicado</h2>
+    </div>
+    <div class="bg-white/60 backdrop-blur-sm rounded-2xl border border-graphite/10 p-6 md:p-8 shadow-glass">
+      <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {paraQuem.map((item) => (
+          <li class="flex items-start gap-3">
+            <div class="w-6 h-6 rounded-full bg-rose/10 flex items-center justify-center shrink-0 mt-0.5">
+              <i class="ph-fill ph-check text-rose text-xs"></i>
+            </div>
+            <span class="text-logogrey font-light">{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Como funciona -->
+  <section id="como-funciona" class="scroll-mt-40">
+    <div class="flex items-center gap-4 mb-6">
+      <div class="w-12 h-12 rounded-xl bg-rose/10 flex items-center justify-center shrink-0">
+        <i class="ph-fill ph-gear text-rose text-xl"></i>
+      </div>
+      <h2 class="text-2xl md:text-3xl font-serif text-graphite">Como funciona</h2>
+    </div>
+    <div class="bg-white/60 backdrop-blur-sm rounded-2xl border border-graphite/10 p-6 md:p-8 shadow-glass mb-8">
+      <p class="text-logogrey font-light leading-relaxed text-lg">{comoFunciona}</p>
+    </div>
+    
+    {passos && passos.length > 0 && (
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {passos.map((passo) => (
+          <div class="bg-white/60 backdrop-blur-sm rounded-2xl border border-graphite/10 p-6 shadow-glass relative overflow-hidden group hover:border-rose/20 transition-all">
+            <div class="absolute top-0 right-0 w-20 h-20 bg-rose/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+            <div class="relative z-10">
+              <div class="w-10 h-10 rounded-full bg-rose/10 flex items-center justify-center mb-4">
+                <span class="text-rose font-serif font-bold">{passo.ordem}</span>
+              </div>
+              <h3 class="text-graphite font-medium mb-2">{passo.titulo}</h3>
+              <p class="text-logogrey text-sm font-light leading-relaxed">{passo.descricao}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    )}
+  </section>
+
+  <!-- Áreas Tratadas -->
+  <section id="areas-tratadas" class="scroll-mt-40">
+    <div class="flex items-center gap-4 mb-6">
+      <div class="w-12 h-12 rounded-xl bg-rose/10 flex items-center justify-center shrink-0">
+        <i class="ph-fill ph-map-pin text-rose text-xl"></i>
+      </div>
+      <h2 class="text-2xl md:text-3xl font-serif text-graphite">Áreas Tratadas</h2>
+    </div>
+    <div class="flex flex-wrap gap-3">
+      {areasTratadas.map((area) => (
+        <span class="inline-flex items-center gap-2 px-5 py-2.5 bg-white/60 backdrop-blur-sm rounded-full border border-graphite/10 text-graphite text-sm font-medium shadow-glass hover:border-rose/30 hover:bg-rose/5 transition-all">
+          <i class="ph-fill ph-check-circle text-rose"></i>
+          {area}
+        </span>
+      ))}
+    </div>
+  </section>
+
+  <!-- Resultados -->
+  <section id="resultados" class="scroll-mt-40">
+    <div class="flex items-center gap-4 mb-6">
+      <div class="w-12 h-12 rounded-xl bg-rose/10 flex items-center justify-center shrink-0">
+        <i class="ph-fill ph-chart-line-up text-rose text-xl"></i>
+      </div>
+      <h2 class="text-2xl md:text-3xl font-serif text-graphite">Resultados Esperados</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+      <div class="bg-white/60 backdrop-blur-sm rounded-2xl border border-graphite/10 p-6 shadow-glass text-center">
+        <div class="w-14 h-14 rounded-full bg-rose/10 flex items-center justify-center mx-auto mb-4">
+          <i class="ph-fill ph-clock text-rose text-2xl"></i>
+        </div>
+        <h3 class="text-graphite font-medium mb-1">Duração</h3>
+        <p class="text-logogrey text-sm font-light">{duracao}</p>
+      </div>
+      <div class="bg-white/60 backdrop-blur-sm rounded-2xl border border-graphite/10 p-6 shadow-glass text-center">
+        <div class="w-14 h-14 rounded-full bg-rose/10 flex items-center justify-center mx-auto mb-4">
+          <i class="ph-fill ph-arrow-u-up-left text-rose text-2xl"></i>
+        </div>
+        <h3 class="text-graphite font-medium mb-1">Recuperação</h3>
+        <p class="text-logogrey text-sm font-light">{recuperacao}</p>
+      </div>
+      <div class="bg-white/60 backdrop-blur-sm rounded-2xl border border-graphite/10 p-6 shadow-glass text-center">
+        <div class="w-14 h-14 rounded-full bg-rose/10 flex items-center justify-center mx-auto mb-4">
+          <i class="ph-fill ph-calendar text-rose text-2xl"></i>
+        </div>
+        <h3 class="text-graphite font-medium mb-1">Manutenção</h3>
+        <p class="text-logogrey text-sm font-light">Consulte na avaliação</p>
+      </div>
+    </div>
+    <div class="bg-white/60 backdrop-blur-sm rounded-2xl border border-graphite/10 p-6 md:p-8 shadow-glass">
+      <p class="text-logogrey font-light leading-relaxed">{resultados}</p>
+    </div>
+  </section>
+
+  <!-- Cuidados -->
+  <section id="cuidados" class="scroll-mt-40">
+    <div class="flex items-center gap-4 mb-6">
+      <div class="w-12 h-12 rounded-xl bg-rose/10 flex items-center justify-center shrink-0">
+        <i class="ph-fill ph-heartbeat text-rose text-xl"></i>
+      </div>
+      <h2 class="text-2xl md:text-3xl font-serif text-graphite">Cuidados</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="bg-white/60 backdrop-blur-sm rounded-2xl border border-graphite/10 p-6 shadow-glass">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-full bg-nude/20 flex items-center justify-center">
+            <i class="ph-fill ph-arrow-down text-nude"></i>
+          </div>
+          <h3 class="text-graphite font-medium">Antes do Procedimento</h3>
+        </div>
+        <ul class="space-y-3">
+          {cuidadosAntes.map((cuidado) => (
+            <li class="flex items-start gap-3">
+              <div class="w-5 h-5 rounded-full bg-nude/20 flex items-center justify-center shrink-0 mt-0.5">
+                <i class="ph-fill ph-minus text-nude text-xs"></i>
+              </div>
+              <span class="text-logogrey text-sm font-light">{cuidado}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      
+      <div class="bg-white/60 backdrop-blur-sm rounded-2xl border border-graphite/10 p-6 shadow-glass">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-full bg-rose/10 flex items-center justify-center">
+            <i class="ph-fill ph-arrow-up text-rose"></i>
+          </div>
+          <h3 class="text-graphite font-medium">Depois do Procedimento</h3>
+        </div>
+        <ul class="space-y-3">
+          {cuidadosDepois.map((cuidado) => (
+            <li class="flex items-start gap-3">
+              <div class="w-5 h-5 rounded-full bg-rose/10 flex items-center justify-center shrink-0 mt-0.5">
+                <i class="ph-fill ph-check text-rose text-xs"></i>
+              </div>
+              <span class="text-logogrey text-sm font-light">{cuidado}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="scroll-mt-40">
+    <div class="flex items-center gap-4 mb-6">
+      <div class="w-12 h-12 rounded-xl bg-rose/10 flex items-center justify-center shrink-0">
+        <i class="ph-fill ph-question text-rose text-xl"></i>
+      </div>
+      <h2 class="text-2xl md:text-3xl font-serif text-graphite">Dúvidas Frequentes</h2>
+    </div>
+    <div class="space-y-3">
+      {perguntasFrequentes.map((faq, index) => (
+        <FAQItem question={faq.pergunta} answer={faq.resposta} index={index} />
+      ))}
+    </div>
+  </section>
+</div>
+
+<script is:inline>
+  // Active tab highlighting on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const tabLinks = document.querySelectorAll('.tab-link');
+
+  const observerOptions = {
+    rootMargin: '-100px 0px -60% 0px',
+    threshold: 0
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        tabLinks.forEach(link => {
+          const linkSection = link.getAttribute('data-section');
+          if (linkSection === id) {
+            link.classList.add('bg-rose/10', 'text-rose');
+            link.classList.remove('text-logogrey');
+          } else {
+            link.classList.remove('bg-rose/10', 'text-rose');
+            link.classList.add('text-logogrey');
+          }
+        });
+      }
+    });
+  }, observerOptions);
+
+  sections.forEach(section => observer.observe(section));
+
+  // Smooth scroll for tab links
+  tabLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href');
+      const target = document.querySelector(targetId);
+      if (target) {
+        const headerOffset = 120;
+        const elementPosition = target.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+</script>

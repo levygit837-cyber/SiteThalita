@@ -1,0 +1,24 @@
+---
+export interface Props {
+  icon: string;
+  title: string;
+  description: string;
+  href?: string;
+  linkText?: string;
+  titleI18n?: string;
+  descI18n?: string;
+}
+
+const { icon, title, description, href, linkText, titleI18n, descI18n } = Astro.props;
+---
+
+<div class="bg-white/60 rounded-2xl p-8 border border-graphite/10 hover:border-rose/30 transition-colors group shadow-glass">
+    <div class="w-16 h-16 rounded-full bg-rose/15 flex items-center justify-center mb-6 group-hover:bg-rose/25 transition-colors">
+        <i class={`ph-fill ${icon} text-rose text-2xl`}></i>
+    </div>
+    <h3 class="text-graphite font-serif text-xl mb-4" data-i18n={titleI18n}>{title}</h3>
+    <p class="text-logogrey text-sm font-light leading-relaxed mb-6" data-i18n={descI18n}>{description}</p>
+    {href && linkText && (
+        <a href={href} class="text-rose text-sm font-medium hover:underline" rel="nofollow">{linkText}</a>
+    )}
+</div>

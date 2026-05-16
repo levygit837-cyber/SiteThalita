@@ -1,0 +1,51 @@
+---
+export interface Props {
+    size?: string;
+    top?: string;
+    bottom?: string;
+    left?: string;
+    right?: string;
+    rotation?: number;
+    opacity?: number;
+    flip?: boolean;
+    class?: string;
+}
+
+const {
+    size = '200px',
+    top,
+    bottom,
+    left,
+    right,
+    rotation = 0,
+    opacity = 0.22,
+    flip = false,
+    class: extraClass = ''
+} = Astro.props;
+
+const positionStyle: Record<string, string> = {};
+if (top !== undefined) positionStyle.top = top;
+if (bottom !== undefined) positionStyle.bottom = bottom;
+if (left !== undefined) positionStyle.left = left;
+if (right !== undefined) positionStyle.right = right;
+
+const flipTransform = flip ? ' scaleX(-1)' : '';
+---
+
+<div
+    class={`absolute pointer-events-none select-none ${extraClass}`}
+    style={{
+        width: size,
+        height: size,
+        opacity: opacity,
+        transform: `rotate(${rotation}deg)${flipTransform}`,
+        ...positionStyle
+    }}
+>
+    <img
+        src="/assets/folha-marca.png"
+        alt=""
+        aria-hidden="true"
+        class="w-full h-full animate-leaf-float"
+    />
+</div>

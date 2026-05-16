@@ -1,0 +1,100 @@
+---
+import '../styles/global.css';
+import { translations } from '../i18n/translations';
+
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Dra. Thalita Barbosa | Medicina Estética",
+  description = "Medicina estética com precisão, ciência e naturalidade. Tratamentos personalizados que valoram sua identidade visual."
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>{title}</title>
+    <meta name="description" content={description}>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- i18n: Inline translations -->
+    <script is:inline define:vars={{ translationsJson: JSON.stringify(translations) }}>
+      window.__translations = JSON.parse(translationsJson);
+    </script>
+
+    <!-- i18n: Apply language immediately -->
+    <script is:inline>
+      (function() {
+        const lang = localStorage.getItem('lang') || 'pt';
+        document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'es';
+
+        function getNestedValue(obj, path) {
+          return path.split('.').reduce((current, key) => current?.[key], obj);
+        }
+
+        function applyTranslations(targetLang) {
+          const t = window.__translations?.[targetLang];
+          if (!t) return;
+
+          // Text content
+          document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            const text = getNestedValue(t, key);
+            if (text !== undefined && text !== null) {
+              el.textContent = text;
+            }
+          });
+
+          // Attributes
+          document.querySelectorAll('[data-i18n-attr]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            const attr = el.getAttribute('data-i18n-attr');
+            const text = getNestedValue(t, key);
+            if (text !== undefined && text !== null && attr) {
+              el.setAttribute(attr, text);
+            }
+          });
+
+          // Update meta title and description
+          const metaTitle = getNestedValue(t, 'layout.title');
+          const metaDesc = getNestedValue(t, 'layout.description');
+          if (metaTitle) document.title = metaTitle;
+          const metaDescEl = document.querySelector('meta[name="description"]');
+          if (metaDescEl && metaDesc) metaDescEl.setAttribute('content', metaDesc);
+        }
+
+        // Apply on DOM ready
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', function() { applyTranslations(lang); });
+        } else {
+          applyTranslations(lang);
+        }
+
+        // Listen for language changes
+        window.addEventListener('langchange', function(e) {
+          applyTranslations(e.detail.lang);
+        });
+      })();
+    </script>
+</head>
+<body class="bg-pearl text-graphite antialiased selection:bg-nude selection:text-graphite">
+    <slot />
+    <script src="../scripts/interactions.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+---
+export interface Props {
+  text: string;
+  i18nKey?: string;
+}
+
+const { text, i18nKey } = Astro.props;
+---
+
+<div class="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded-full border border-rose/30 bg-nude/10 self-start">
+    <span class="w-1.5 h-1.5 rounded-full bg-rose"></span>
+    <span class="text-xs font-semibold tracking-widest uppercase text-rose/90" data-i18n={i18nKey}>{text}</span>
+</div>

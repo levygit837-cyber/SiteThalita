@@ -1,0 +1,29 @@
+---
+import LanguageToggle from './LanguageToggle.astro';
+---
+
+<header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-500 bg-pearl/80 backdrop-blur-xl border-b border-graphite/10 py-2 md:py-3">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-12 flex justify-between items-center">
+        <a href="#" class="flex flex-col items-start gap-1 group z-50" rel="nofollow">
+            <img src="/assets/images/logo-thalita-barbosa.png" alt="Logo Thalita Barbosa" data-i18n="header.logoAlt" data-i18n-attr="alt" class="h-16 md:h-24 w-auto opacity-100 group-hover:opacity-90 transition-opacity drop-shadow-sm">
+        </a>
+
+        <nav class="hidden lg:flex items-center gap-8 text-sm font-medium tracking-wide">
+            <a href="#filosofia" class="text-graphite/70 hover:text-rose transition-colors" rel="nofollow" data-i18n="header.nav.filosofia">Filosofia</a>
+            <a href="#sobre" class="text-graphite/70 hover:text-rose transition-colors" rel="nofollow" data-i18n="header.nav.sobre">A Médica</a>
+            <a href="#peleglow" class="text-graphite/70 hover:text-rose transition-colors" rel="nofollow" data-i18n="header.nav.metodo">Método Glow</a>
+            <a href="#procedimentos" class="text-graphite/70 hover:text-rose transition-colors" rel="nofollow" data-i18n="header.nav.procedimentos">Procedimentos</a>
+            <a href="#jornada" class="text-graphite/70 hover:text-rose transition-colors" rel="nofollow" data-i18n="header.nav.jornada">Jornada</a>
+        </nav>
+
+        <div class="flex items-center gap-3">
+            <LanguageToggle />
+            <a href="#agendamento" class="hidden md:inline-flex items-center justify-center px-6 py-2.5 bg-rose text-white font-semibold text-sm rounded-full btn-hover-effect hover:scale-[0.98] transition-transform shadow-[0_6px_20px_-8px_rgba(185,143,135,0.5)]" rel="nofollow" data-i18n="header.cta">
+                Agendar Avaliação
+            </a>
+            <button class="lg:hidden text-graphite text-2xl z-50" id="mobile-menu-btn" aria-label="Abrir menu" data-i18n="header.menuAria" data-i18n-attr="aria-label">
+                <i class="ph ph-list"></i>
+            </button>
+        </div>
+    </div>
+</header>

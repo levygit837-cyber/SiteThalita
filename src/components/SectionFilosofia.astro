@@ -1,0 +1,45 @@
+---
+import DecorativeLeaf from './DecorativeLeaf.astro';
+---
+
+<section id="filosofia" class="py-32 bg-fog relative bg-pattern-dots bg-blob-right overflow-hidden">
+    <DecorativeLeaf size="520px" top="-10%" right="-8%" rotation={-20} />
+    <div class="max-w-[1400px] mx-auto px-4 md:px-12">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="reveal-left">
+                <h2 class="text-fluid-h2 font-serif text-graphite mb-6" data-i18n="filosofia.title">Naturalidade acima de tudo</h2>
+                <p class="text-logogrey font-light text-lg leading-relaxed mb-8" data-i18n="filosofia.paragraph">
+                    Acreditamos que a estética deve realçar sua beleza natural, não transformá-la completamente. Cada tratamento é planejado para harmonizar com seus traços e preservar sua identidade.
+                </p>
+                <div class="space-y-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-full bg-nude/20 flex items-center justify-center shrink-0">
+                            <i class="ph-fill ph-heart text-rose text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-graphite font-medium mb-2" data-i18n="filosofia.feature1Title">Respeito à individualidade</h4>
+                            <p class="text-logogrey text-sm font-light" data-i18n="filosofia.feature1Desc">Cada rosto é único e merece um plano personalizado.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-full bg-nude/20 flex items-center justify-center shrink-0">
+                            <i class="ph-fill ph-lightning text-rose text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-graphite font-medium mb-2" data-i18n="filosofia.feature2Title">Resultados naturais</h4>
+                            <p class="text-logogrey text-sm font-light" data-i18n="filosofia.feature2Desc">Técnicas que valorizam sem exagerar.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="reveal-right">
+                <div class="bg-rose/10 rounded-[2rem] border border-rose/20 p-8 backdrop-blur-sm shadow-glass">
+                    <blockquote class="text-2xl font-serif italic text-rose mb-4" data-i18n="filosofia.quote">
+                        "A beleza mais autêntica é aquela que parece natural, como se sempre tivesse estado ali."
+                    </blockquote>
+                    <p class="text-logogrey text-sm" data-i18n="filosofia.quoteAuthor">— Dra. Thalita Barbosa</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

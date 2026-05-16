@@ -1,0 +1,83 @@
+---
+export interface Props {
+  icon: string;
+  categoria: string;
+  categoriaSlug: string;
+  title: string;
+  subtitle: string;
+  resumo: string;
+}
+
+const { icon, categoria, categoriaSlug, title, subtitle, resumo } = Astro.props;
+---
+
+<section class="relative pt-32 pb-16 md:pt-40 md:pb-24 bg-pattern-dots bg-blob-right overflow-hidden">
+  <div class="absolute right-[-10%] top-[-10%] w-[40%] h-[40%] bg-nude/20 rounded-full blur-[120px] pointer-events-none"></div>
+  <div class="absolute left-[-5%] bottom-[-10%] w-[30%] h-[30%] bg-blush/15 rounded-full blur-[100px] pointer-events-none"></div>
+  
+  <div class="max-w-[1400px] mx-auto px-4 md:px-12 relative z-10">
+    <!-- Breadcrumb -->
+    <nav class="mb-8 reveal-up">
+      <ol class="flex items-center gap-2 text-sm text-logogrey">
+        <li><a href="/" class="hover:text-rose transition-colors">Início</a></li>
+        <li><i class="ph ph-caret-right text-xs"></i></li>
+        <li><a href="/#procedimentos" class="hover:text-rose transition-colors">Procedimentos</a></li>
+        <li><i class="ph ph-caret-right text-xs"></i></li>
+        <li><a href={`/#${categoriaSlug}`} class="hover:text-rose transition-colors">{categoria}</a></li>
+        <li><i class="ph ph-caret-right text-xs"></i></li>
+        <li class="text-graphite font-medium">{title}</li>
+      </ol>
+    </nav>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <!-- Texto -->
+      <div class="reveal-up">
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-rose/10 rounded-full text-rose text-sm font-medium mb-6">
+          <i class={`ph-fill ${icon}`}></i>
+          <span>{categoria}</span>
+        </div>
+        
+        <h1 class="text-fluid-h2 font-serif text-graphite mb-4">{title}</h1>
+        <p class="text-rose font-medium text-lg mb-4">{subtitle}</p>
+        <p class="text-logogrey font-light leading-relaxed text-lg mb-8 max-w-xl">{resumo}</p>
+        
+        <div class="flex flex-wrap gap-4">
+          <a 
+            href="#agendamento" 
+            class="inline-flex items-center justify-center px-8 py-3.5 bg-rose text-white font-semibold text-sm rounded-full btn-hover-effect hover:scale-[0.98] transition-transform shadow-[0_6px_20px_-8px_rgba(185,143,135,0.5)]"
+          >
+            <i class="ph-fill ph-calendar-check mr-2"></i>
+            Agendar Avaliação
+          </a>
+          <a 
+            href="https://wa.me/" 
+            target="_blank"
+            class="inline-flex items-center justify-center px-8 py-3.5 bg-white/60 text-graphite font-medium text-sm rounded-full border border-graphite/10 hover:border-rose/30 hover:text-rose transition-all"
+          >
+            <i class="ph-fill ph-whatsapp-logo mr-2"></i>
+            Tire suas Dúvidas
+          </a>
+        </div>
+      </div>
+
+      <!-- Ilustração / Placeholder visual -->
+      <div class="reveal-left hidden lg:flex justify-center items-center">
+        <div class="relative">
+          <div class="w-72 h-72 rounded-full bg-rose/10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 blur-2xl"></div>
+          <div class="w-56 h-56 rounded-3xl bg-white/80 backdrop-blur-xl border border-rose/20 shadow-glass flex items-center justify-center relative z-10">
+            <div class="w-32 h-32 rounded-full bg-rose/15 flex items-center justify-center">
+              <i class={`ph-fill ${icon} text-rose text-6xl`}></i>
+            </div>
+          </div>
+          <!-- Elementos decorativos -->
+          <div class="absolute -top-4 -right-4 w-16 h-16 rounded-full bg-nude/30 backdrop-blur-sm border border-white/40 flex items-center justify-center">
+            <i class="ph-fill ph-heart text-rose text-xl"></i>
+          </div>
+          <div class="absolute -bottom-6 -left-6 w-20 h-20 rounded-2xl bg-blush/20 backdrop-blur-sm border border-white/40 flex items-center justify-center rotate-12">
+            <i class="ph-fill ph-sparkle text-rose text-2xl"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

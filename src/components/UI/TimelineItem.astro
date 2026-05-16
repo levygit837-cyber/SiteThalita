@@ -1,0 +1,22 @@
+---
+export interface Props {
+  icon: string;
+  step: number;
+  title: string;
+  description: string;
+  titleI18n?: string;
+  descI18n?: string;
+}
+
+const { icon, step, title, description, titleI18n, descI18n } = Astro.props;
+---
+
+<div class="relative reveal-left">
+    <div class="absolute left-[-40px] w-12 h-12 rounded-full bg-nude flex items-center justify-center z-10">
+        <i class={`ph-fill ${icon} text-graphite text-xl`}></i>
+    </div>
+    <div class="bg-white/60 rounded-2xl p-8 border border-graphite/10 shadow-glass">
+        <h3 class="text-graphite font-serif text-xl mb-2">{step}. <span data-i18n={titleI18n}>{title}</span></h3>
+        <p class="text-logogrey text-sm font-light" data-i18n={descI18n}>{description}</p>
+    </div>
+</div>

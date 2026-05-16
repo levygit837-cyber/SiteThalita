@@ -1,0 +1,41 @@
+---
+import SectionHeader from './UI/SectionHeader.astro';
+import Card from './UI/Card.astro';
+---
+
+<section id="peleglow" class="py-32 bg-rose/5 relative bg-pattern-grid bg-arc-top overflow-hidden">
+    <div class="max-w-[1400px] mx-auto px-4 md:px-12">
+        <SectionHeader
+            badge="Metodologia"
+            title="Método Pele Glow"
+            description="Uma abordagem integrada que combina tratamentos estéticos com cuidados diários para resultados duradouros."
+            badgeI18n="metodo.badge"
+            titleI18n="metodo.title"
+            descI18n="metodo.description"
+        />
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 stagger-group">
+            <Card
+                icon="ph-scan"
+                title="Avaliação Detalhada"
+                description="Análise completa da pele e dos traços faciais para identificar as melhores estratégias de tratamento."
+                titleI18n="metodo.card1Title"
+                descI18n="metodo.card1Desc"
+            />
+            <Card
+                icon="ph-magic-wand"
+                title="Tratamento Personalizado"
+                description="Procedimentos adaptados às necessidades específicas de cada paciente, com técnicas avançadas."
+                titleI18n="metodo.card2Title"
+                descI18n="metodo.card2Desc"
+            />
+            <Card
+                icon="ph-shield-check"
+                title="Manutenção Contínua"
+                description="Acompanhamento regular e orientações para manter os resultados ao longo do tempo."
+                titleI18n="metodo.card3Title"
+                descI18n="metodo.card3Desc"
+            />
+        </div>
+    </div>
+</section>

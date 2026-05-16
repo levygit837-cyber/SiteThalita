@@ -1,0 +1,48 @@
+---
+import DecorativeLeaf from './DecorativeLeaf.astro';
+---
+
+<section class="relative min-h-[100dvh] w-full flex items-start overflow-hidden bg-pearl bg-pattern-grid bg-organic-blobs">
+    <!-- Brand Watermark: single large leaf cut by bottom-left edge -->
+    <DecorativeLeaf size="600px" bottom="-15%" left="-10%" rotation={30} />
+
+    <div class="max-w-[1400px] w-full mx-auto px-4 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-8 relative z-10 h-full items-center">
+        <!-- Text Content -->
+        <div class="lg:col-span-6 flex flex-col justify-center order-2 lg:order-1 reveal-left">
+            <div class="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded-full border border-rose/30 bg-nude/10 self-start">
+                <span class="w-1.5 h-1.5 rounded-full bg-rose"></span>
+                <span class="text-xs font-semibold tracking-widest uppercase text-rose/90" data-i18n="hero.badge">Dossiê Médico-Estético</span>
+            </div>
+
+            <h1 class="text-fluid-h1 font-serif text-graphite tracking-tight mb-6" data-i18n="hero.headline">
+                Medicina estética com precisão, ciência e naturalidade.
+            </h1>
+
+            <p class="text-lg text-logogrey font-light mb-8 leading-relaxed max-w-xl" data-i18n="hero.subtitle">
+                Tratamentos personalizados que valorizam sua identidade visual, combinando técnicas avançadas com resultados naturais e duradouros.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="#agendamento" class="inline-flex items-center justify-center px-8 py-4 bg-rose text-white font-semibold rounded-full btn-hover-effect hover:scale-[0.98] transition-transform shadow-[0_10px_30px_-10px_rgba(185,143,135,0.5)]" rel="nofollow" data-i18n="hero.ctaPrimary">
+                    Agendar Avaliação
+                </a>
+                <a href="#filosofia" class="inline-flex items-center justify-center px-8 py-4 border border-graphite/20 text-graphite font-medium rounded-full hover:bg-graphite/5 transition-colors" rel="nofollow" data-i18n="hero.ctaSecondary">
+                    Conhecer Método
+                </a>
+            </div>
+        </div>
+
+        <!-- Image/Visual -->
+        <div class="lg:col-span-6 flex items-end justify-center order-1 lg:order-2 reveal-right self-end">
+            <div class="relative w-full flex items-end justify-center" style="height: 100dvh;">
+                <img
+                    src="/assets/ThalitaSemFundoCintura.png"
+                    alt="Dra. Thalita Barbosa"
+                    data-i18n="hero.imgAlt"
+                    data-i18n-attr="alt"
+                    class="w-full h-full object-contain object-bottom drop-shadow-2xl"
+                />
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,43 @@
+---
+import SectionHeader from './UI/SectionHeader.astro';
+import FAQItem from './UI/FAQItem.astro';
+---
+
+<section class="py-32 bg-pearl relative overflow-hidden bg-pattern-grid bg-blob-right">
+    <div class="absolute left-[-20%] top-[30%] w-[50%] h-[50%] bg-nude/20 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="max-w-[1400px] mx-auto px-4 md:px-12 relative z-10">
+        <SectionHeader
+            badge="Dúvidas"
+            title="Perguntas Frequentes"
+            badgeI18n="faq.badge"
+            titleI18n="faq.title"
+        />
+
+        <div class="max-w-3xl mx-auto space-y-4">
+            <FAQItem
+                question="Os procedimentos são dolorosos?"
+                answer="A maioria dos procedimentos é minimamente invasiva e causa pouco desconforto. Utilizamos anestésicos locais quando necessário para garantir seu conforto."
+                questionI18n="faq.q1"
+                answerI18n="faq.a1"
+            />
+            <FAQItem
+                question="Quanto tempo duram os resultados?"
+                answer="A duração varia conforme o procedimento e o metabolismo de cada paciente. Em média, os resultados duram de 6 a 18 meses, podendo ser mantidos com tratamentos de manutenção."
+                questionI18n="faq.q2"
+                answerI18n="faq.a2"
+            />
+            <FAQItem
+                question="Existe período de recuperação?"
+                answer="A maioria dos tratamentos permite retorno imediato às atividades normais. Alguns podem apresentar leve vermelhidão ou inchaço temporário que desaparece em poucos dias."
+                questionI18n="faq.q3"
+                answerI18n="faq.a3"
+            />
+            <FAQItem
+                question='A Gestão do "Não" na Estética'
+                answer="O compromisso médico muitas vezes exige saber não indicar um procedimento caso não traga harmonia natural ao rosto, preservando a identidade visual da paciente."
+                questionI18n="faq.q4"
+                answerI18n="faq.a4"
+            />
+        </div>
+    </div>
+</section>

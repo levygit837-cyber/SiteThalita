@@ -1,0 +1,68 @@
+---
+import SectionHeader from './UI/SectionHeader.astro';
+import TimelineItem from './UI/TimelineItem.astro';
+---
+
+<section id="jornada" class="py-32 bg-fog relative bg-pattern-lines bg-blob-left overflow-hidden">
+    <div class="max-w-[1400px] mx-auto px-4 md:px-12">
+        <SectionHeader
+            badge="Experiência"
+            title="Sua Jornada"
+            description="Um processo cuidadoso e personalizado do início ao fim."
+            badgeI18n="jornada.badge"
+            titleI18n="jornada.title"
+            descI18n="jornada.description"
+        />
+
+        <div class="max-w-3xl mx-auto" id="timeline-container">
+            <div class="relative pl-16">
+                <div class="timeline-line">
+                    <div class="timeline-progress" id="timeline-progress"></div>
+                </div>
+
+                <div class="space-y-12">
+                    <TimelineItem
+                        icon="ph-calendar-check"
+                        step={1}
+                        title="Agendamento"
+                        description="Entre em contato para agendar sua avaliação inicial."
+                        titleI18n="jornada.step1Title"
+                        descI18n="jornada.step1Desc"
+                    />
+                    <TimelineItem
+                        icon="ph-clipboard-text"
+                        step={2}
+                        title="Avaliação"
+                        description="Consulta detalhada para entender suas necessidades e expectativas."
+                        titleI18n="jornada.step2Title"
+                        descI18n="jornada.step2Desc"
+                    />
+                    <TimelineItem
+                        icon="ph-pencil-line"
+                        step={3}
+                        title="Plano Personalizado"
+                        description="Desenvolvimento de um protocolo específico para você."
+                        titleI18n="jornada.step3Title"
+                        descI18n="jornada.step3Desc"
+                    />
+                    <TimelineItem
+                        icon="ph-syringe"
+                        step={4}
+                        title="Tratamento"
+                        description="Execução dos procedimentos com segurança e conforto."
+                        titleI18n="jornada.step4Title"
+                        descI18n="jornada.step4Desc"
+                    />
+                    <TimelineItem
+                        icon="ph-arrows-clockwise"
+                        step={5}
+                        title="Acompanhamento"
+                        description="Follow-up contínuo para garantir resultados satisfatórios."
+                        titleI18n="jornada.step5Title"
+                        descI18n="jornada.step5Desc"
+                    />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

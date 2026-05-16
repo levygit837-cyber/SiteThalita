@@ -1,0 +1,61 @@
+---
+import DecorativeLeaf from './DecorativeLeaf.astro';
+---
+
+<section id="agendamento" class="py-32 bg-pearl relative overflow-hidden bg-pattern-dots bg-organic-blobs">
+    <!-- Abstract Decoration -->
+    <div class="absolute left-[-20%] top-[-10%] w-[50%] h-[50%] bg-nude/20 rounded-full blur-[120px] pointer-events-none"></div>
+    <DecorativeLeaf size="460px" bottom="-10%" left="-6%" rotation={-20} flip={true} />
+
+    <div class="max-w-[1400px] mx-auto px-4 md:px-12 relative z-10">
+        <div class="bg-rose/5 border border-rose/20 rounded-[2.5rem] p-8 md:p-16 lg:p-20 shadow-2xl flex flex-col lg:flex-row gap-16 items-center reveal-up backdrop-blur-md">
+
+            <div class="flex-1 text-center lg:text-left">
+                <h2 class="text-4xl md:text-5xl font-serif text-graphite mb-6">
+                    <span data-i18n="agendamento.title">Deseja iniciar seu plano </span>
+                    <span class="italic text-rose" data-i18n="agendamento.titleHighlight">Pele Glow?</span>
+                </h2>
+                <p class="text-logogrey font-light mb-10 text-lg" data-i18n="agendamento.subtitle">
+                    A avaliação médica é o primeiro e mais importante passo. Entre em contato para agendar seu horário em Ciudad del Este.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <a href="https://wa.me/554599467721" class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#25D366] text-white font-semibold rounded-full hover:bg-[#1EBE5D] transition-colors shadow-[0_10px_20px_-10px_rgba(37,211,102,0.5)]" rel="nofollow" target="_blank">
+                        <i class="ph-fill ph-whatsapp text-2xl"></i>
+                        <span data-i18n="agendamento.whatsappBtn">Agendar via WhatsApp</span>
+                    </a>
+                    <a href="https://www.instagram.com/drathalitaabarbosa?igsh=azhmNzdvNWRhem4w" class="inline-flex items-center justify-center px-8 py-4 border border-graphite/20 text-graphite font-medium rounded-full hover:bg-graphite/5 transition-colors" rel="nofollow" target="_blank">
+                        <i class="ph ph-instagram-logo mr-2"></i>
+                        <span data-i18n="agendamento.instagramBtn">Ver Instagram</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="w-full lg:w-[400px] shrink-0">
+                <div class="bg-white/60 border border-graphite/10 rounded-[2rem] p-8 backdrop-blur-md shadow-glass">
+                    <h4 class="text-graphite font-serif text-xl mb-6" data-i18n="agendamento.infoTitle">Informações</h4>
+                    <ul class="space-y-4 text-sm text-logogrey font-light">
+                        <li class="flex items-start gap-4 pb-4 border-b border-graphite/10">
+                            <i class="ph ph-map-pin text-rose text-xl shrink-0 mt-0.5"></i>
+                            <span>
+                                <span class="text-graphite font-medium" data-i18n="agendamento.infoLocationTitle">Locais de atendimento:</span><br>
+                                <span class="text-xs text-graphite/70 mt-1 block" data-i18n="agendamento.infoLocation1">- Clínica Virgen de Caacupé</span>
+                                <span class="text-xs text-graphite/70 block" data-i18n="agendamento.infoLocation2">- Instituto Rhema</span>
+                                <span class="text-xs text-graphite/50 mt-1 block" data-i18n="agendamento.infoLocation3">Ciudad del Este - Paraguai</span>
+                            </span>
+                        </li>
+                        <li class="flex items-start gap-4 pb-4 border-b border-graphite/10">
+                            <i class="ph ph-clock text-rose text-xl shrink-0 mt-0.5"></i>
+                            <span data-i18n="agendamento.infoHours">Atendimentos com horário previamente agendado.</span>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <i class="ph ph-shield-check text-rose text-xl shrink-0 mt-0.5"></i>
+                            <span data-i18n="agendamento.infoEthics">Ética, sigilo do prontuário e ambiente preparado.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

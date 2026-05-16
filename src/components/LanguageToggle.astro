@@ -1,0 +1,55 @@
+---
+---
+
+<button
+  id="lang-toggle"
+  class="flex items-center gap-2 px-3 py-2 rounded-full border border-graphite/15 hover:border-rose/40 hover:bg-rose/5 transition-all duration-300 text-sm font-medium"
+  aria-label="Mudar idioma / Cambiar idioma"
+  title="Mudar idioma / Cambiar idioma"
+>
+  <span id="lang-flag-pt" class="flex items-center gap-1.5 transition-opacity duration-300 opacity-100">
+    <span class="text-base leading-none">🇧🇷</span>
+    <span class="text-xs text-graphite/70 hidden sm:inline">PT</span>
+  </span>
+  <span class="text-graphite/20">|</span>
+  <span id="lang-flag-es" class="flex items-center gap-1.5 transition-opacity duration-300 opacity-40">
+    <span class="text-base leading-none">🇪🇸</span>
+    <span class="text-xs text-graphite/70 hidden sm:inline">ES</span>
+  </span>
+</button>
+
+<script is:inline>
+  (function() {
+    const btn = document.getElementById('lang-toggle');
+    const flagPt = document.getElementById('lang-flag-pt');
+    const flagEs = document.getElementById('lang-flag-es');
+
+    function updateActiveLang() {
+      const current = localStorage.getItem('lang') || 'pt';
+      if (current === 'pt') {
+        flagPt.style.opacity = '1';
+        flagEs.style.opacity = '0.4';
+      } else {
+        flagPt.style.opacity = '0.4';
+        flagEs.style.opacity = '1';
+      }
+    }
+
+    updateActiveLang();
+
+    btn.addEventListener('click', function() {
+      const current = localStorage.getItem('lang') || 'pt';
+      const next = current === 'pt' ? 'es' : 'pt';
+      localStorage.setItem('lang', next);
+      document.documentElement.lang = next === 'pt' ? 'pt-BR' : 'es';
+
+      // Dispara evento para que o script do Layout aplique as traduções
+      window.dispatchEvent(new CustomEvent('langchange', { detail: { lang: next } }));
+
+      updateActiveLang();
+    });
+
+    // Atualiza visual quando idioma muda de outra fonte
+    window.addEventListener('langchange', updateActiveLang);
+  })();
+</script>

@@ -1,0 +1,156 @@
+---
+import { categoriasProcedimentos, getCategoriaBySlug } from '../../data/procedimentos';
+
+export interface Props {
+  categoriaSlugAtual: string;
+  procedimentoSlugAtual: string;
+}
+
+const { categoriaSlugAtual, procedimentoSlugAtual } = Astro.props;
+
+const categoriaAtual = getCategoriaBySlug(categoriaSlugAtual);
+---
+
+<aside class="hidden lg:block w-72 shrink-0">
+  <div class="sticky top-28">
+    <!-- Categorias -->
+    <div class="bg-white/60 backdrop-blur-xl rounded-2xl border border-graphite/10 shadow-glass p-6 mb-6">
+      <h3 class="text-graphite font-serif text-lg mb-4">Categorias</h3>
+      <ul class="space-y-2">
+        {categoriasProcedimentos.map((cat) => {
+          const isActive = cat.slug === categoriaSlugAtual;
+          return (
+            <li>
+              <a 
+                href={`/procedimentos/${cat.procedimentos[0].slug}`}
+                class={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm transition-all ${
+                  isActive 
+                    ? 'bg-rose/10 text-rose font-medium border border-rose/20' 
+                    : 'text-logogrey hover:bg-rose/5 hover:text-graphite'
+                }`}
+              >
+                <i class={`ph-fill ${cat.icon} text-lg ${isActive ? 'text-rose' : 'text-logogrey/50'}`}></i>
+                <span>{cat.title}</span>
+                <span class={`ml-auto text-xs ${isActive ? 'text-rose' : 'text-logogrey/40'}`}>
+                  {cat.procedimentos.length}
+                </span>
+              </a>
+              
+              {/* Subitens da categoria ativa */}
+              {isActive && cat.procedimentos.length > 0 && (
+                <ul class="mt-2 ml-4 space-y-1 border-l-2 border-rose/20 pl-4">
+                  {cat.procedimentos.map((proc) => {
+                    const isProcActive = proc.slug === procedimentoSlugAtual;
+                    return (
+                      <li>
+                        <a 
+                          href={`/procedimentos/${proc.slug}`}
+                          class={`block px-3 py-2 rounded-lg text-xs transition-all ${
+                            isProcActive 
+                              ? 'bg-rose/10 text-rose font-medium' 
+                              : 'text-logogrey/70 hover:text-rose hover:bg-rose/5'
+                          }`}
+                        >
+                          {proc.title}
+                        </a>
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+
+    {/* CTA Card */}
+    <div class="bg-graphite rounded-2xl p-6 text-white relative overflow-hidden">
+      <div class="absolute inset-0 bg-noise opacity-30"></div>
+      <div class="relative z-10">
+        <div class="w-12 h-12 rounded-full bg-rose/20 flex items-center justify-center mb-4">
+          <i class="ph-fill ph-calendar-check text-rose text-xl"></i>
+        </div>
+        <h4 class="font-serif text-lg mb-2">Agende sua Avaliação</h4>
+        <p class="text-pearl/60 text-sm font-light mb-4">Descubra o tratamento ideal para você com uma consulta personalizada.</p>
+        <a 
+          href="#agendamento" 
+          class="inline-flex items-center justify-center w-full px-6 py-3 bg-rose text-white font-medium text-sm rounded-full btn-hover-effect hover:scale-[0.98] transition-transform"
+        >
+          Agendar Agora
+          <i class="ph ph-arrow-right ml-2"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- Mobile: dropdown de navegação -->
+<div class="lg:hidden mb-8">
+  <div class="bg-white/60 backdrop-blur-xl rounded-2xl border border-graphite/10 shadow-glass overflow-hidden">
+    <button 
+      id="mobile-cat-toggle"
+      class="w-full flex items-center justify-between px-6 py-4 text-left"
+      onclick="document.getElementById('mobile-cat-menu').classList.toggle('hidden')"
+    >
+      <div class="flex items-center gap-3">
+        <i class={`ph-fill ${categoriaAtual?.icon || 'ph-folder'} text-rose text-xl`}></i>
+        <div>
+          <span class="text-logogrey text-xs block">Categoria</span>
+          <span class="text-graphite font-medium">{categoriaAtual?.title || 'Procedimentos'}</span>
+        </div>
+      </div>
+      <i class="ph ph-caret-down text-logogrey transition-transform" id="mobile-cat-icon"></i>
+    </button>
+    
+    <div id="mobile-cat-menu" class="hidden border-t border-graphite/5">
+      <div class="p-4 space-y-2">
+        {categoriasProcedimentos.map((cat) => (
+          <div>
+            <a 
+              href={`/procedimentos/${cat.procedimentos[0].slug}`}
+              class={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm transition-all ${
+                cat.slug === categoriaSlugAtual 
+                  ? 'bg-rose/10 text-rose font-medium' 
+                  : 'text-logogrey hover:bg-rose/5'
+              }`}
+            >
+              <i class={`ph-fill ${cat.icon}`}></i>
+              <span>{cat.title}</span>
+            </a>
+            
+            {cat.slug === categoriaSlugAtual && (
+              <div class="ml-4 mt-1 space-y-1 border-l-2 border-rose/20 pl-4">
+                {cat.procedimentos.map((proc) => (
+                  <a 
+                    href={`/procedimentos/${proc.slug}`}
+                    class={`block px-3 py-2 rounded-lg text-xs transition-all ${
+                      proc.slug === procedimentoSlugAtual 
+                        ? 'bg-rose/10 text-rose font-medium' 
+                        : 'text-logogrey/70 hover:text-rose'
+                    }`}
+                  >
+                    {proc.title}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  // Toggle mobile menu icon
+  const toggle = document.getElementById('mobile-cat-toggle');
+  const menu = document.getElementById('mobile-cat-menu');
+  const icon = document.getElementById('mobile-cat-icon');
+  
+  if (toggle && menu && icon) {
+    toggle.addEventListener('click', () => {
+      icon.style.transform = menu.classList.contains('hidden') ? 'rotate(180deg)' : 'rotate(0deg)';
+    });
+  }
+</script>

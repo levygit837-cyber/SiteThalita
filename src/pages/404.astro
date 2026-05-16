@@ -1,0 +1,106 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import MobileCTA from '../components/MobileCTA.astro';
+---
+
+<Layout 
+  title="Página não encontrada | Dra. Thalita Barbosa"
+  description="A página que você procura não foi encontrada. Explore nossos procedimentos ou retorne à página inicial."
+>
+  <Header />
+  
+  <main class="min-h-screen flex items-center justify-center relative overflow-hidden bg-pattern-dots">
+    <!-- Decoração de fundo -->
+    <div class="absolute right-[-15%] top-[-10%] w-[50%] h-[50%] bg-nude/15 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute left-[-10%] bottom-[-15%] w-[40%] h-[40%] bg-blush/10 rounded-full blur-[100px] pointer-events-none"></div>
+    
+    <div class="max-w-[1400px] mx-auto px-4 md:px-12 py-32 relative z-10 text-center">
+      
+      <!-- 404 com decoração -->
+      <div class="flex items-center justify-center gap-3 mb-10">
+        <div class="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white/80 backdrop-blur-sm border border-graphite/10 shadow-glass flex items-center justify-center">
+          <i class="ph-fill ph-leaf text-blush text-xl md:text-2xl"></i>
+        </div>
+        
+        <div class="w-28 h-28 md:w-36 md:h-36 rounded-3xl bg-white/80 backdrop-blur-xl border border-rose/15 shadow-glass flex items-center justify-center">
+          <span class="text-5xl md:text-6xl font-serif text-rose/40">404</span>
+        </div>
+        
+        <div class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-rose/10 border border-rose/20 flex items-center justify-center">
+          <i class="ph-fill ph-heart text-rose text-lg md:text-xl"></i>
+        </div>
+      </div>
+      
+      <!-- Texto -->
+      <h1 class="text-3xl md:text-4xl font-serif text-graphite mb-4">
+        Página não encontrada
+      </h1>
+      <p class="text-logogrey font-light text-lg max-w-md mx-auto mb-4">
+        Parece que a página que você procura não existe ou foi movida.
+      </p>
+      <p class="text-logogrey/60 font-light text-sm max-w-md mx-auto mb-10">
+        Não se preocupe — podemos te ajudar a encontrar o que precisa.
+      </p>
+      
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+        <a 
+          href="/" 
+          class="inline-flex items-center justify-center px-8 py-3.5 bg-rose text-white font-semibold text-sm rounded-full btn-hover-effect hover:scale-[0.98] transition-transform shadow-[0_6px_20px_-8px_rgba(185,143,135,0.5)]"
+        >
+          <i class="ph-fill ph-house mr-2"></i>
+          Voltar para o início
+        </a>
+        <a 
+          href="/#procedimentos" 
+          class="inline-flex items-center justify-center px-8 py-3.5 bg-white/60 text-graphite font-medium text-sm rounded-full border border-graphite/10 hover:border-rose/30 hover:text-rose transition-all"
+        >
+          <i class="ph-fill ph-sparkle mr-2"></i>
+          Ver Procedimentos
+        </a>
+      </div>
+      
+      <!-- Sugestões rápidas -->
+      <div class="max-w-2xl mx-auto">
+        <p class="text-logogrey/50 text-xs uppercase tracking-wider mb-6">Procedimentos populares</p>
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          <a 
+            href="/procedimentos/botox-baby" 
+            class="px-5 py-2.5 bg-white/40 backdrop-blur-sm rounded-full border border-graphite/5 text-graphite/70 text-sm hover:border-rose/20 hover:text-rose hover:bg-white/80 transition-all"
+          >
+            Botox Baby
+          </a>
+          <a 
+            href="/procedimentos/preenchimento-facial" 
+            class="px-5 py-2.5 bg-white/40 backdrop-blur-sm rounded-full border border-graphite/5 text-graphite/70 text-sm hover:border-rose/20 hover:text-rose hover:bg-white/80 transition-all"
+          >
+            Preenchimento Facial
+          </a>
+          <a 
+            href="/procedimentos/regeneracao-facial" 
+            class="px-5 py-2.5 bg-white/40 backdrop-blur-sm rounded-full border border-graphite/5 text-graphite/70 text-sm hover:border-rose/20 hover:text-rose hover:bg-white/80 transition-all"
+          >
+            Regeneração Facial
+          </a>
+          <a 
+            href="/procedimentos/glow-skin-presencial" 
+            class="px-5 py-2.5 bg-white/40 backdrop-blur-sm rounded-full border border-graphite/5 text-graphite/70 text-sm hover:border-rose/20 hover:text-rose hover:bg-white/80 transition-all"
+          >
+            Glow Skin
+          </a>
+          <a 
+            href="/procedimentos/rinomodelacao" 
+            class="px-5 py-2.5 bg-white/40 backdrop-blur-sm rounded-full border border-graphite/5 text-graphite/70 text-sm hover:border-rose/20 hover:text-rose hover:bg-white/80 transition-all"
+          >
+            Rinomodelação
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <Footer />
+  <MobileCTA />
+</Layout>

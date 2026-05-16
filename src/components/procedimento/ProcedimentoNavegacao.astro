@@ -1,0 +1,94 @@
+---
+import { getAdjacentProcedimentos, getProcedimentoBySlug } from '../../data/procedimentos';
+
+export interface Props {
+  slugAtual: string;
+}
+
+const { slugAtual } = Astro.props;
+
+const { anterior, proximo } = getAdjacentProcedimentos(slugAtual);
+---
+
+{/* Navegação entre procedimentos */}
+<section class="py-12 border-t border-graphite/10">
+  <div class="max-w-[1400px] mx-auto px-4 md:px-12">
+    <div class="flex flex-col sm:flex-row items-stretch justify-between gap-4">
+      {/* Anterior */}
+      <div class={`flex-1 ${!anterior ? 'invisible' : ''}`}>
+        {anterior && (
+          <a 
+            href={`/procedimentos/${anterior.slug}`}
+            class="group flex items-center gap-4 p-6 bg-white/60 backdrop-blur-sm rounded-2xl border border-graphite/10 hover:border-rose/30 hover:shadow-glass transition-all h-full"
+          >
+            <div class="w-12 h-12 rounded-full bg-rose/10 flex items-center justify-center shrink-0 group-hover:bg-rose/20 transition-colors">
+              <i class="ph ph-arrow-left text-rose text-xl"></i>
+            </div>
+            <div class="min-w-0">
+              <span class="text-logogrey text-xs block mb-1">Procedimento Anterior</span>
+              <span class="text-graphite font-medium group-hover:text-rose transition-colors truncate block">{anterior.title}</span>
+            </div>
+          </a>
+        )}
+      </div>
+
+      {/* Voltar para todos */}
+      <a 
+        href="/#procedimentos"
+        class="flex items-center justify-center gap-2 px-6 py-4 bg-graphite/5 rounded-2xl text-graphite font-medium text-sm hover:bg-rose/10 hover:text-rose transition-all shrink-0"
+      >
+        <i class="ph-fill ph-grid-four"></i>
+        <span class="hidden sm:inline">Ver Todos</span>
+      </a>
+
+      {/* Próximo */}
+      <div class={`flex-1 ${!proximo ? 'invisible' : ''}`}>
+        {proximo && (
+          <a 
+            href={`/procedimentos/${proximo.slug}`}
+            class="group flex items-center justify-end gap-4 p-6 bg-white/60 backdrop-blur-sm rounded-2xl border border-graphite/10 hover:border-rose/30 hover:shadow-glass transition-all h-full text-right"
+          >
+            <div class="min-w-0">
+              <span class="text-logogrey text-xs block mb-1">Próximo Procedimento</span>
+              <span class="text-graphite font-medium group-hover:text-rose transition-colors truncate block">{proximo.title}</span>
+            </div>
+            <div class="w-12 h-12 rounded-full bg-rose/10 flex items-center justify-center shrink-0 group-hover:bg-rose/20 transition-colors">
+              <i class="ph ph-arrow-right text-rose text-xl"></i>
+            </div>
+          </a>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* CTA Final */}
+<section class="py-16 md:py-24 bg-graphite relative overflow-hidden">
+  <div class="absolute inset-0 bg-noise opacity-30"></div>
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-[60%] bg-rose/10 rounded-full blur-[120px] pointer-events-none"></div>
+  
+  <div class="max-w-[1400px] mx-auto px-4 md:px-12 relative z-10 text-center">
+    <div class="w-16 h-16 rounded-full bg-rose/20 flex items-center justify-center mx-auto mb-6">
+      <i class="ph-fill ph-calendar-check text-rose text-2xl"></i>
+    </div>
+    <h2 class="text-3xl md:text-4xl font-serif text-white mb-4">Pronto para começar?</h2>
+    <p class="text-pearl/60 font-light max-w-xl mx-auto mb-8">Agende sua avaliação personalizada e descubra como este tratamento pode transformar sua autoestima.</p>
+    <div class="flex flex-wrap items-center justify-center gap-4">
+      <a 
+        href="#agendamento" 
+        class="inline-flex items-center justify-center px-8 py-4 bg-rose text-white font-semibold rounded-full btn-hover-effect hover:scale-[0.98] transition-transform shadow-[0_6px_20px_-8px_rgba(185,143,135,0.5)]"
+      >
+        <i class="ph-fill ph-calendar-check mr-2"></i>
+        Agendar Avaliação
+      </a>
+      <a 
+        href="https://wa.me/" 
+        target="_blank"
+        class="inline-flex items-center justify-center px-8 py-4 bg-white/10 text-white font-medium rounded-full border border-white/20 hover:bg-white/20 transition-all"
+      >
+        <i class="ph-fill ph-whatsapp-logo mr-2"></i>
+        Falar no WhatsApp
+      </a>
+    </div>
+  </div>
+</section>

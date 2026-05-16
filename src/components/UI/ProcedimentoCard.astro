@@ -1,0 +1,81 @@
+---
+export interface Subcategoria {
+  nome: string;
+  slug: string;
+  descricao: string;
+  area?: string;
+  href?: string;
+  nomeI18n?: string;
+  descricaoI18n?: string;
+}
+
+export interface Grupo {
+  titulo?: string;
+  tituloI18n?: string;
+  itens: Subcategoria[];
+}
+
+export interface Props {
+  icon: string;
+  title: string;
+  description: string;
+  grupos: Grupo[];
+  cardId: string;
+  titleI18n?: string;
+  descI18n?: string;
+}
+
+const { icon, title, description, grupos, cardId, titleI18n, descI18n } = Astro.props;
+
+const totalOpcoes = grupos.reduce((acc, g) => acc + g.itens.length, 0);
+---
+
+<div class="procedimento-card bg-white/60 rounded-2xl border border-graphite/10 hover:border-rose/30 transition-all group shadow-glass overflow-hidden">
+  <input type="checkbox" class="accordion-input hidden" id={`accordion-${cardId}`} />
+
+  <label for={`accordion-${cardId}`} class="accordion-label cursor-pointer block p-8">
+    <div class="w-16 h-16 rounded-full bg-rose/15 flex items-center justify-center mb-6 group-hover:bg-rose/25 transition-colors text-rose">
+      <slot name="icon">
+        <i class={`ph-fill ${icon} text-rose text-2xl`}></i>
+      </slot>
+    </div>
+    <h3 class="text-graphite font-serif text-xl mb-2" data-i18n={titleI18n}>{title}</h3>
+    <p class="text-logogrey text-sm font-light leading-relaxed mb-4" data-i18n={descI18n}>{description}</p>
+    <div class="flex items-center justify-end">
+      <span class="text-rose text-sm font-medium flex items-center gap-1">
+        <span data-i18n="ui.verOpcoes">Ver opções</span>
+        <i class="ph ph-caret-down acc-icon transition-transform duration-300"></i>
+      </span>
+    </div>
+  </label>
+
+  <div class="accordion-content">
+    <div>
+      <div class="max-h-[400px] overflow-y-auto">
+        <div class="px-8 pb-8 pt-2 border-t border-graphite/5">
+        {grupos.map((grupo, gIndex) => (
+          <div class={gIndex > 0 ? 'mt-6' : ''}>
+            {grupo.titulo && (
+              <h4 class="text-graphite font-serif text-xs font-medium mb-3 uppercase tracking-wider" data-i18n={grupo.tituloI18n}>{grupo.titulo}</h4>
+            )}
+            <div class="space-y-2">
+              {grupo.itens.map((item) => (
+                <div class="bg-pearl/60 rounded-xl p-4 border border-graphite/5">
+                  <div class="flex items-start justify-between gap-3">
+                    <div class="flex-1 min-w-0">
+                      <h5 class="text-graphite font-medium text-sm mb-1" data-i18n={item.nomeI18n}>{item.nome}</h5>
+                      <p class="text-logogrey text-xs font-light leading-relaxed" data-i18n={item.descricaoI18n}>{item.descricao}</p>
+                    </div>
+                  </div>
+                  <a href={`/procedimentos/${item.slug}`} class="text-rose text-xs font-medium mt-2 inline-block hover:underline" data-i18n="ui.saibaMais">Saiba mais →</a>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+

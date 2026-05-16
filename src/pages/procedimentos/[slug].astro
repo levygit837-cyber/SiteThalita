@@ -1,0 +1,102 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import MobileCTA from '../../components/MobileCTA.astro';
+import ProcedimentoHero from '../../components/procedimento/ProcedimentoHero.astro';
+import ProcedimentoSidebar from '../../components/procedimento/ProcedimentoSidebar.astro';
+import ProcedimentoContent from '../../components/procedimento/ProcedimentoContent.astro';
+import ProcedimentoNavegacao from '../../components/procedimento/ProcedimentoNavegacao.astro';
+import { getProcedimentoBySlug, getAllSlugs } from '../../data/procedimentos';
+
+export async function getStaticPaths() {
+  const slugs = getAllSlugs();
+  return slugs.map(slug => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params;
+const procedimento = getProcedimentoBySlug(slug!);
+
+if (!procedimento) {
+  return Astro.redirect('/404');
+}
+---
+
+<Layout 
+  title={`${procedimento.title} | Dra. Thalita Barbosa`}
+  description={procedimento.resumo}
+>
+  <Header />
+  
+  <main>
+    <ProcedimentoHero
+      icon={procedimento.icon}
+      categoria={procedimento.categoria}
+      categoriaSlug={procedimento.categoriaSlug}
+      title={procedimento.title}
+      subtitle={procedimento.subtitle}
+      resumo={procedimento.resumo}
+    />
+    
+    <section class="py-16 md:py-24 bg-pearl relative">
+      <div class="absolute left-[-5%] top-[20%] w-[30%] h-[30%] bg-nude/10 rounded-full blur-[100px] pointer-events-none"></div>
+      
+      <div class="max-w-[1400px] mx-auto px-4 md:px-12 relative z-10">
+        <div class="flex gap-12">
+          <ProcedimentoSidebar 
+            categoriaSlugAtual={procedimento.categoriaSlug} 
+            procedimentoSlugAtual={procedimento.slug} 
+          />
+          
+          <div class="flex-1 min-w-0">
+            <ProcedimentoContent
+              oQueE={procedimento.oQueE}
+              paraQuem={procedimento.paraQuem}
+              comoFunciona={procedimento.comoFunciona}
+              passos={procedimento.passos}
+              areasTratadas={procedimento.areasTratadas}
+              resultados={procedimento.resultados}
+              duracao={procedimento.duracao}
+              recuperacao={procedimento.recuperacao}
+              cuidadosAntes={procedimento.cuidadosAntes}
+              cuidadosDepois={procedimento.cuidadosDepois}
+              perguntasFrequentes={procedimento.perguntasFrequentes}
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <ProcedimentoNavegacao slugAtual={procedimento.slug} />
+  </main>
+  
+  <Footer />
+  <MobileCTA />
+</Layout>
+
+<script is:inline>
+  // Reveal animations
+  const revealElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
+  
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-revealed');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  
+  revealElements.forEach(el => revealObserver.observe(el));
+  
+  // Stagger groups
+  const staggerGroups = document.querySelectorAll('.stagger-group');
+  const staggerObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-revealed');
+      }
+    });
+  }, { threshold: 0.1 });
+  
+  staggerGroups.forEach(el => staggerObserver.observe(el));
+</script>

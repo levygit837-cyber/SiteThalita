@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Dra. Thalita Barbosa | Medicina Estética</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        graphite: '#111113',
+                        softblack: '#1C1B1F',
+                        charcoal: '#17202A',
+                        navy: '#22313F',
+                        fog: '#E8E6E2',
+                        pearl: '#F7F5F1',
+                        nude: '#D8C5BA',
+                        blush: '#CFAEA1',
+                        rose: '#B98F87',
+                        silver: '#A7A7A7',
+                        logogrey: '#5F5F5F'
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['Manrope', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.05)',
+                        'glass-dark': '0 8px 32px 0 rgba(0, 0, 0, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        /* Custom Properties & Utilities */
+        :root {
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        body {
+            background-color: #111113;
+            color: #F7F5F1;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Fluid Typography scaling for large headings */
+        .text-fluid-h1 { font-size: clamp(2.5rem, 5vw + 1rem, 4.75rem); line-height: 1.05; }
+        .text-fluid-h2 { font-size: clamp(2rem, 3vw + 1rem, 3.25rem); line-height: 1.1; }
+
+        /* Glassmorphism Classes */
+        .glass-panel-dark {
+            background: rgba(28, 27, 31, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+        }
+
+        .glass-panel-light {
+            background: rgba(247, 245, 241, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(17, 17, 19, 0.05);
+        }
+
+        /* Scroll Animations Engine */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1.2s var(--ease-out-expo), transform 1.2s var(--ease-out-expo);
+        }
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 1.2s var(--ease-out-expo), transform 1.2s var(--ease-out-expo);
+        }
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 1.2s var(--ease-out-expo), transform 1.2s var(--ease-out-expo);
+        }
+        
+        .is-revealed {
+            opacity: 1;
+            transform: translate(0);
+        }
+
+        /* Staggered Children Setup */
+        .stagger-group > * {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s var(--ease-out-expo);
+        }
+        .stagger-group.is-revealed > * {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .stagger-group.is-revealed > *:nth-child(1) { transition-delay: 0.1s; }
+        .stagger-group.is-revealed > *:nth-child(2) { transition-delay: 0.2s; }
+        .stagger-group.is-revealed > *:nth-child(3) { transition-delay: 0.3s; }
+        .stagger-group.is-revealed > *:nth-child(4) { transition-delay: 0.4s; }
+        .stagger-group.is-revealed > *:nth-child(5) { transition-delay: 0.5s; }
+
+        /* Micro-interactions */
+        .btn-hover-effect {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-hover-effect::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: all 0.5s ease;
+        }
+        .btn-hover-effect:hover::after { left: 100%; }
+        
+        .image-zoom-container { overflow: hidden; }
+        .image-zoom-container img { transition: transform 1.5s var(--ease-out-expo); }
+        .image-zoom-container:hover img { transform: scale(1.03); }
+
+        /* Document Theme Borders */
+        .doc-border-top { border-top: 1px solid rgba(167, 167, 167, 0.3); }
+        .doc-border-bottom { border-bottom: 1px solid rgba(167, 167, 167, 0.3); }
+
+        /* Smooth Hide Scrollbar for internal panels */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Accordion logic */
+        .accordion-content {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.4s var(--ease-out-expo);
+        }
+        .accordion-content > div { overflow: hidden; }
+        .accordion-input:checked ~ .accordion-content { grid-template-rows: 1fr; }
+        .accordion-input:checked ~ .accordion-label .acc-icon { transform: rotate(45deg); color: #D8C5BA; }
+
+        /* Page transitions */
+        .page-transition {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-graphite text-pearl antialiased selection:bg-nude selection:text-graphite">
+
+    <!-- Header -->
+    <header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-500 bg-graphite/40 backdrop-blur-xl border-b border-white/5 py-4">
+        <div class="max-w-[1400px] mx-auto px-6 md:px-12 flex justify-between items-center">
+            <a href="variant2-index.html" class="flex flex-col items-start gap-1 group z-50">
+                <img src="https://cdn.aidesigner.ai/user-assets/faf1936f29aef8d0/1778683957867-Thaligalogo4.jpeg" alt="Logo Thalita Barbosa" class="h-8 md:h-10 w-auto invert opacity-90 group-hover:opacity-100 transition-opacity" style="filter: brightness(0) invert(1) drop-shadow(0 0 1px rgba(255,255,255,0.5)); mix-blend-mode: screen;">
+            </a>
+            
+            <nav class="hidden lg:flex items-center gap-8 text-sm font-medium tracking-wide">
+                <a href="variant2-filosofia.html" class="text-white/70 hover:text-nude transition-colors">Filosofia</a>
+                <a href="variant2-sobre.html" class="text-white/70 hover:text-nude transition-colors">A Médica</a>
+                <a href="variant2-metodo.html" class="text-white/70 hover:text-nude transition-colors">Método Glow</a>
+                <a href="variant2-procedimentos.html" class="text-white/70 hover:text-nude transition-colors">Procedimentos</a>
+                <a href="variant2-jornada.html" class="text-white/70 hover:text-nude transition-colors">Jornada</a>
+            </nav>
+
+            <a href="variant2-agendamento.html" class="hidden md:inline-flex items-center justify-center px-6 py-2.5 bg-nude text-graphite font-semibold text-sm rounded-full btn-hover-effect hover:scale-[0.98] transition-transform">
+                Agendar Avaliação
+            </a>
+
+            <!-- Mobile Menu Btn -->
+            <button class="lg:hidden text-pearl text-2xl z-50">
+                <i class="ph ph-list"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Principal -->
+    <section class="relative min-h-[100dvh] w-full flex items-center pt-20 overflow-hidden bg-graphite page-transition">
+        <!-- Abstract Watermark Leaf -->
+        <div class="absolute right-[-10vw] top-[10vh] w-[70vw] h-[70vw] opacity-5 pointer-events-none">
+            <svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="0.5" class="w-full h-full text-pearl animate-[pulse_8s_ease-in-out_infinite]">
+                <path d="M100,180 C100,180 30,120 30,60 C30,20 70,20 100,60 C130,20 170,20 170,60 C170,120 100,180 100,180 Z" />
+                <line x1="100" y1="60" x2="100" y2="180" />
+            </svg>
+        </div>
+
+        <div class="max-w-[1400px] w-full mx-auto px-4 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-8 relative z-10">
+            <!-- Text Content -->
+            <div class="lg:col-span-6 flex flex-col justify-center order-2 lg:order-1 reveal-left pt-10 lg:pt-0">
+                <div class="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded-full border border-nude/30 bg-nude/5 self-start">
+                    <span class="w-1.5 h-1.5 rounded-full bg-nude"></span>
+                    <span class="text-xs font-semibold tracking-widest uppercase text-nude/90">Dossiê Médico-Estético</span>
+                </div>
+                
+                <h1 class="text-fluid-h1 font-serif text-pearl tracking-tight mb-6">
+                    Medicina estética com precisão, ciência e naturalidade.
+                </h1>
+                
+                <p class="text-lg text-silver font-light mb-8 leading-relaxed max-w-xl">
+                    Tratamentos personalizados que valorizam sua identidade visual, combinando técnicas avançadas com resultados naturais e duradouros.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="variant2-agendamento.html" class="inline-flex items-center justify-center px-8 py-4 bg-nude text-graphite font-semibold rounded-full btn-hover-effect hover:scale-[0.98] transition-transform">
+                        Agendar Avaliação
+                    </a>
+                    <a href="variant2-filosofia.html" class="inline-flex items-center justify-center px-8 py-4 border border-white/20 text-pearl font-medium rounded-full hover:bg-white/5 transition-colors">
+                        Conhecer Método
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Image/Visual -->
+            <div class="lg:col-span-6 flex items-center justify-center order-1 lg:order-2 reveal-right">
+                <div class="relative w-full max-w-[500px] aspect-[4/5]">
+                    <div class="absolute inset-0 bg-gradient-to-b from-nude/20 to-transparent rounded-[2rem] blur-3xl opacity-30"></div>
+                    <div class="relative w-full h-full bg-charcoal/50 rounded-[2rem] border border-white/10 overflow-hidden backdrop-blur-sm flex items-center justify-center">
+                        <div class="text-center p-8">
+                            <div class="w-24 h-24 mx-auto mb-6 rounded-full bg-nude/20 flex items-center justify-center">
+                                <i class="ph-fill ph-sparkle text-4xl text-nude"></i>
+                            </div>
+                            <p class="text-silver font-light">Imagem profissional da Dra. Thalita</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Institucional -->
+    <footer class="bg-black text-white/60 py-16 border-t border-white/5 text-sm font-light">
+        <div class="max-w-[1400px] mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            
+            <div class="md:col-span-1">
+                <img src="https://cdn.aidesigner.ai/user-assets/faf1936f29aef8d0/1778683957867-Thaligalogo4.jpeg" alt="Logo" class="h-8 w-auto invert opacity-50 mb-6" style="filter: brightness(0) invert(1);">
+                <p class="max-w-[200px]">Medicina estética com precisão, ciência e naturalidade.</p>
+            </div>
+
+            <div>
+                <h5 class="text-white font-medium mb-4 uppercase tracking-wider text-xs">Acesso Rápido</h5>
+                <ul class="space-y-3">
+                    <li><a href="variant2-sobre.html" class="hover:text-nude transition-colors">A Médica</a></li>
+                    <li><a href="variant2-procedimentos.html" class="hover:text-nude transition-colors">Tratamentos</a></li>
+                    <li><a href="variant2-metodo.html" class="hover:text-nude transition-colors">Método Pele Glow</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h5 class="text-white font-medium mb-4 uppercase tracking-wider text-xs">Legal</h5>
+                <ul class="space-y-3">
+                    <li><a href="#" class="hover:text-nude transition-colors">Política de Privacidade</a></li>
+                    <li><a href="#" class="hover:text-nude transition-colors">Termos de Uso</a></li>
+                    <li><a href="#" class="hover:text-nude transition-colors">Aviso Médico</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h5 class="text-white font-medium mb-4 uppercase tracking-wider text-xs">Contato</h5>
+                <p class="mb-2">Ciudad del Este / PY</p>
+                <div class="flex gap-4 mt-6">
+                    <a href="#" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-nude hover:text-black transition-colors"><i class="ph-fill ph-whatsapp text-lg"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-nude hover:text-black transition-colors"><i class="ph-fill ph-instagram-logo text-lg"></i></a>
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="max-w-[1400px] mx-auto px-6 md:px-12 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium">
+            <p>&copy; 2024 Dra. Thalita Barbosa. Todos os direitos reservados.</p>
+            <p>Dra. Thalita Barbosa - Médica (UNIDA). Pós-graduanda Dermato Clínica.</p>
+        </div>
+    </footer>
+
+    <!-- Fixed Mobile CTA -->
+    <div class="fixed bottom-0 left-0 w-full p-4 lg:hidden z-50 bg-gradient-to-t from-graphite pt-10 to-transparent">
+        <a href="variant2-agendamento.html" class="flex items-center justify-center gap-2 w-full py-4 bg-nude text-black font-semibold rounded-2xl shadow-2xl">
+            <i class="ph-fill ph-calendar-plus text-xl"></i> Agendar Avaliação
+        </a>
+    </div>
+
+    <!-- Scripts for Interactions -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Header scroll effect
+            const header = document.getElementById('main-header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('shadow-glass', 'bg-graphite/80');
+                    header.classList.remove('bg-graphite/40');
+                } else {
+                    header.classList.remove('shadow-glass', 'bg-graphite/80');
+                    header.classList.add('bg-graphite/40');
+                }
+            });
+
+            // Intersection Observer for Reveal Animations
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-revealed');
+                    }
+                });
+            }, observerOptions);
+
+            const revealElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right, .stagger-group');
+            revealElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
