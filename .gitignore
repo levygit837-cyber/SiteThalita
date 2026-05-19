@@ -3,30 +3,103 @@ dist/
 
 # generated types
 .astro/
-
 # dependencies
 node_modules/
-
 # logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
-
 # environment variables
 .env
 .env.production
 .env.local
-
 # macOS-specific files
 .DS_Store
-
 # jetbrains setting folder
 .idea/
-
 # VS Code settings (opcional — descomente se quiser ignorar)
 # .vscode/
-
 # lock files alternativos (se não usar)
 # yarn.lock
 # pnpm-lock.yaml
+# ============================
+# Portfolio protection rules
+# Logs e arquivos temporários
+*.log
+*.txt
+!requirements.txt
+logs/
+tmp/
+temp/
+# Arquivos de IA / Assistants
+.aidesigner/
+.aider/
+.agents/
+.archive/
+.bg-shell/
+.claude/
+.clinerules/
+.codex/
+.factory/
+.kiro/
+.mcp.json
+.planning/
+.playwright-cli/
+.qwen/
+.windsurf/
+codedb.snapshot
+# Status / Temp docs
+ANALISE*.md
+ANALISE-*.md
+CORRECAO*.md
+CORRECAO-*.md
+DECISAO*.md
+IMPLEMENTACAO*.md
+IMPLEMENTATION_*.md
+RESUMO*.md
+RESUMO-*.md
+SOLUCAO*.md
+STREAMING_FIX*.md
+SUCESSO*.md
+TESTE*.md
+SELFCODE-REVIEW*.md
+CODE-REVIEW*.md
+LIGHTPANDA*.md
+PROJECT_STRUCTURE.md
+FRONTEND_CONECTADO.md
+PHASE-*-TEST-RESULTS.md
+blocked.txt
+pytest_output.txt
+pytest_fail_details.txt
+# Arquivos binários / Artefatos
+*.docx
+*.doc
+*.xlsx
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+output/
+# IDE / Local
+.vscode/
+*.swp
+*.swo
+*~
+# Secrets / Configs locais
+.env.*.local
+config.yaml
+config.local.yaml
+!.env.example
+# Dependências
+vendor/
+__pycache__/
+*.pyc
+*.pyo
+.gitkeep
+# Build / Dist
+build/
+coverage/
+*.tsbuildinfo
