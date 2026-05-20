@@ -103,3 +103,7 @@ __pycache__/
 build/
 coverage/
 *.tsbuildinfo
+
+# Documentacoes tecnicas internas - nao commitar em repo publico
+docs/adr/
+docs/*.txt
